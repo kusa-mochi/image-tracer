@@ -29,7 +29,7 @@
             </Grid.RowDefinitions>
             <TextBlock TextWrapping="Wrap" Text="縦" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,20"/>
             <TextBlock HorizontalAlignment="Left" Grid.Row="1" TextWrapping="Wrap" Text="横" VerticalAlignment="Center" Margin="0,20"/>
-            <TextBlock HorizontalAlignment="Left" Grid.Row="2" TextWrapping="Wrap" Text="透過度" VerticalAlignment="Center" Margin="0,20"/>
+            <TextBlock HorizontalAlignment="Left" Grid.Row="2" TextWrapping="Wrap" Text="不透明度" VerticalAlignment="Center" Margin="0,20"/>
             <TextBox TextWrapping="Wrap" VerticalAlignment="Center" Grid.Column="1" Margin="10,0" Text="{Binding Height, FallbackValue=480, StringFormat=\{0:D\}}" TextAlignment="Right"/>
             <TextBox Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Center" Grid.Column="1" Margin="10,0" Text="{Binding Width, FallbackValue=640, StringFormat=\{0:D\}}" TextAlignment="Right"/>
             <TextBox x:Name="_alphaTextBox" TextWrapping="Wrap" Text="{Binding Value, ElementName=_alphaSlider, FallbackValue=0.500, StringFormat=\{0:F3\}}" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" Margin="10,0" TextAlignment="Right"/>
