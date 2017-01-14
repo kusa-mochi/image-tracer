@@ -231,5 +231,27 @@ namespace ImageTracer.Views
         {
             this.GetFixRate();
         }
+
+        private void window_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.Key)
+            {
+                case Key.Left:
+                    this.Left--;
+                    break;
+                case Key.Up:
+                    this.Top--;
+                    break;
+                case Key.Right:
+                    this.Left++;
+                    break;
+                case Key.Down:
+                    this.Top++;
+                    break;
+                default:
+                    // do nothing.
+                    break;
+            }
+        }
     }
 }
