@@ -78,7 +78,7 @@ namespace ImageTracer.ViewModels
                 if (_HoldAspectRatio == value)
                     return;
                 _HoldAspectRatio = value;
-                RaisePropertyChanged();
+                RaisePropertyChanged("HoldAspectRatio");
                 if (value)
                 {
                     FixRateCommand.Execute(null);
@@ -98,8 +98,15 @@ namespace ImageTracer.ViewModels
             {
                 if (_Height == value)
                     return;
+                int h = _Height;
                 _Height = value;
-                RaisePropertyChanged();
+                RaisePropertyChanged("Height");
+
+                if(_HoldAspectRatio)
+                {
+                    _Width = (int)((double)_Width * value / h);
+                    RaisePropertyChanged("Width");
+                }
             }
         }
         #endregion
@@ -115,8 +122,15 @@ namespace ImageTracer.ViewModels
             {
                 if (_Width == value)
                     return;
+                int w = _Width;
                 _Width = value;
-                RaisePropertyChanged();
+                RaisePropertyChanged("Width");
+
+                if (_HoldAspectRatio)
+                {
+                    _Height = (int)((double)_Height * value / w);
+                    RaisePropertyChanged("Height");
+                }
             }
         }
         #endregion
@@ -133,7 +147,7 @@ namespace ImageTracer.ViewModels
                 if (_Alpha == value)
                     return;
                 _Alpha = value;
-                RaisePropertyChanged();
+                RaisePropertyChanged("Alpha");
             }
         }
         #endregion
