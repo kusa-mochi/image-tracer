@@ -7,12 +7,12 @@ using System.Windows;
 // アセンブリに関する一般情報は以下の属性セットをとおして制御されます。
 // アセンブリに関連付けられている情報を変更するには、
 // これらの属性値を変更してください。
-[assembly: AssemblyTitle("ImageTracer")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("半透明画像ビューア")]
+[assembly: AssemblyDescription("ウィンドウの枠無しで画面に直接画像を半透明表示するソフト。")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("ImageTracer")]
-[assembly: AssemblyCopyright("Copyright c  2011")]
+[assembly: AssemblyProduct("半透明画像ビューア")]
+[assembly: AssemblyCopyright("Copyright c  2017 Mochi All Rights Reserved.")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -53,3 +53,5 @@ using System.Windows;
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: NeutralResourcesLanguage("")]
+
