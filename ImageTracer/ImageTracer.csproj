@@ -79,7 +79,6 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Common\DelegateCommand.cs" />
-    <Compile Include="ViewModels\SettingDialogViewModel.cs" />
     <Compile Include="Views\SettingDialog.xaml.cs">
       <DependentUpon>SettingDialog.xaml</DependentUpon>
     </Compile>
