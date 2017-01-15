@@ -100,13 +100,13 @@ namespace ImageTracer.ViewModels
                     return;
                 int h = _Height;
                 _Height = value;
-                RaisePropertyChanged("Height");
 
                 if(_HoldAspectRatio)
                 {
                     _Width = (int)((double)_Width * value / h);
-                    RaisePropertyChanged("Width");
                 }
+
+                RaisePropertyChanged();
             }
         }
         #endregion
@@ -124,13 +124,13 @@ namespace ImageTracer.ViewModels
                     return;
                 int w = _Width;
                 _Width = value;
-                RaisePropertyChanged("Width");
 
                 if (_HoldAspectRatio)
                 {
                     _Height = (int)((double)_Height * value / w);
-                    RaisePropertyChanged("Height");
                 }
+
+                RaisePropertyChanged();
             }
         }
         #endregion
