@@ -22,7 +22,7 @@ namespace ImageTracer.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    public class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace ImageTracer.Properties {
         ///   このクラスで使用されているキャッシュされた ResourceManager インスタンスを返します。
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ImageTracer.Properties.Resources", typeof(Resources).Assembly);
@@ -51,7 +51,7 @@ namespace ImageTracer.Properties {
         ///   現在のスレッドの CurrentUICulture プロパティをオーバーライドします。
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -61,12 +61,101 @@ namespace ImageTracer.Properties {
         }
         
         /// <summary>
-        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        ///   右クリックでメニューを開く に類似しているローカライズされた文字列を検索します。
         /// </summary>
-        internal static System.Drawing.Bitmap dummy {
+        public static string MainWindowLabel_01 {
             get {
-                object obj = ResourceManager.GetObject("dummy", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return ResourceManager.GetString("MainWindowLabel_01", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   画像を開く(_O) に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string MenuLabel_01 {
+            get {
+                return ResourceManager.GetString("MenuLabel_01", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   設定(_E) に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string MenuLabel_02 {
+            get {
+                return ResourceManager.GetString("MenuLabel_02", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   閉じる(_X) に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string MenuLabel_03 {
+            get {
+                return ResourceManager.GetString("MenuLabel_03", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   画像の縦横比を維持する。 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string SettingWindowLabel_01 {
+            get {
+                return ResourceManager.GetString("SettingWindowLabel_01", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   縦 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string SettingWindowLabel_02 {
+            get {
+                return ResourceManager.GetString("SettingWindowLabel_02", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   横 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string SettingWindowLabel_03 {
+            get {
+                return ResourceManager.GetString("SettingWindowLabel_03", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   不透明度 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string SettingWindowLabel_04 {
+            get {
+                return ResourceManager.GetString("SettingWindowLabel_04", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   px に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string SettingWindowLabel_05 {
+            get {
+                return ResourceManager.GetString("SettingWindowLabel_05", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   閉じる に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string SettingWindowLabel_06 {
+            get {
+                return ResourceManager.GetString("SettingWindowLabel_06", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   設定 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string SettingWindowTitle {
+            get {
+                return ResourceManager.GetString("SettingWindowTitle", resourceCulture);
             }
         }
     }

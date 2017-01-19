@@ -6,6 +6,7 @@
         xmlns:l="http://schemas.livet-mvvm.net/2011/wpf"
         xmlns:v="clr-namespace:ImageTracer.Views"
         xmlns:vm="clr-namespace:ImageTracer.ViewModels"
+        xmlns:rs="clr-namespace:ImageTracer.Properties"
         ResizeMode="CanResizeWithGrip"
         Title=""
         WindowStyle="None"
@@ -15,7 +16,8 @@
         Height="{Binding Height, Mode=TwoWay, FallbackValue=480}"
         MouseLeftButtonDown="Window_MouseLeftButtonDown"
         SourceInitialized="window_SourceInitialized"
-        Loaded="window_Loaded" PreviewKeyDown="window_PreviewKeyDown">
+        Loaded="window_Loaded"
+        PreviewKeyDown="window_PreviewKeyDown">
 
     <WindowChrome.WindowChrome>
         <WindowChrome CaptionHeight="{x:Static SystemParameters.CaptionHeight}"
@@ -29,10 +31,11 @@
 
     <Window.Resources>
         <ContextMenu x:Key="MainContextMenu">
-            <MenuItem x:Name="FileOpenMenuItem" Header="画像を開く(_O)" Click="FileOpenMenuItem_Click"/>
-            <MenuItem Header="設定(_E)" Command="{Binding ShowSettingDialogCommand}"/>
-            <MenuItem x:Name="CloseMenuItem" Header="閉じる(_X)" Command="{Binding CloseCommand, Mode=OneWay}"/>
+            <MenuItem x:Name="FileOpenMenuItem" Header="{x:Static rs:Resources.MenuLabel_01}" Click="FileOpenMenuItem_Click"/>
+            <MenuItem Header="{x:Static rs:Resources.MenuLabel_02}" Command="{Binding ShowSettingDialogCommand}"/>
+            <MenuItem x:Name="CloseMenuItem" Header="{x:Static rs:Resources.MenuLabel_03}" Command="{Binding CloseCommand, Mode=OneWay}"/>
         </ContextMenu>
+        <BooleanToVisibilityConverter x:Key="b2v"/>
     </Window.Resources>
 
     <i:Interaction.Triggers>
@@ -67,10 +70,17 @@
     <Grid Width="Auto" Height="Auto">
         <Image
             x:Name="_image"
-            Source="/ImageTracer;component/Resources/dummy.png"
-            Opacity="{Binding Alpha, FallbackValue=0.5}"
+            Source="{Binding CurrentImage}"
             ContextMenu="{StaticResource MainContextMenu}"
+            Opacity="{Binding Alpha, FallbackValue=0.5}"
             Stretch="Fill"
-            OpacityMask="{Binding Opacity}"/>
+            Visibility="{Binding ImageLoaded, Converter={StaticResource b2v}, FallbackValue=Visible, Mode=OneWay}"/>
+        <Grid
+            Background="#FF0070C0"
+            ContextMenu="{StaticResource MainContextMenu}"
+            Opacity="{Binding Alpha, FallbackValue=0.5}"
+            Visibility="{Binding ImageUnloaded, Converter={StaticResource b2v}, FallbackValue=Collapsed, Mode=OneWay}">
+            <TextBlock Text="{x:Static rs:Resources.MainWindowLabel_01}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="32" Foreground="#FFFEFEFE"/>
+        </Grid>
     </Grid>
 </Window>

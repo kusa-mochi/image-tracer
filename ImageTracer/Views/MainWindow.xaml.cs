@@ -68,8 +68,10 @@ namespace ImageTracer.Views
             Nullable<bool> result = dialog.ShowDialog();
             if (result == true)
             {
+                _vm.ImageLoaded = true;
                 BitmapImage bm = FileToBitmapImage(dialog.FileName);
-                _image.Source = bm;
+                _vm.CurrentImage = bm;
+                //_image.Source = bm;
                 this.Width = bm.Width;
                 this.Height = bm.Height;
                 this.GetFixRate();

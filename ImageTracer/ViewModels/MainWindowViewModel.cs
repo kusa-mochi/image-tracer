@@ -5,6 +5,7 @@ using System.Text;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Input;
+using System.Windows.Media.Imaging;
 
 using Livet;
 using Livet.Commands;
@@ -66,6 +67,23 @@ namespace ImageTracer.ViewModels
         {
         }
 
+        #region CurrentImage変更通知プロパティ
+        private BitmapImage _CurrentImage = null;
+
+        public BitmapImage CurrentImage
+        {
+            get
+            { return _CurrentImage; }
+            set
+            { 
+                if (_CurrentImage == value)
+                    return;
+                _CurrentImage = value;
+                RaisePropertyChanged();
+            }
+        }
+        #endregion
+
         #region HoldAspectRatio変更通知プロパティ
         private bool _HoldAspectRatio = true;
 
@@ -78,7 +96,7 @@ namespace ImageTracer.ViewModels
                 if (_HoldAspectRatio == value)
                     return;
                 _HoldAspectRatio = value;
-                RaisePropertyChanged("HoldAspectRatio");
+                RaisePropertyChanged();
                 if (value)
                 {
                     FixRateCommand.Execute(null);
@@ -101,7 +119,7 @@ namespace ImageTracer.ViewModels
                 int h = _Height;
                 _Height = value;
 
-                if(_HoldAspectRatio)
+                if (_HoldAspectRatio)
                 {
                     _Width = (int)((double)_Width * value / h);
                 }
@@ -147,7 +165,42 @@ namespace ImageTracer.ViewModels
                 if (_Alpha == value)
                     return;
                 _Alpha = value;
-                RaisePropertyChanged("Alpha");
+                RaisePropertyChanged();
+            }
+        }
+        #endregion
+
+        #region ImageLoaded変更通知プロパティ
+        private bool _ImageLoaded = false;
+
+        public bool ImageLoaded
+        {
+            get
+            { return _ImageLoaded; }
+            set
+            { 
+                if (_ImageLoaded == value)
+                    return;
+                _ImageLoaded = value;
+                RaisePropertyChanged();
+                ImageUnloaded = !value;
+            }
+        }
+        #endregion
+
+        #region ImageUnloaded変更通知プロパティ
+        private bool _ImageUnloaded = true;
+
+        public bool ImageUnloaded
+        {
+            get
+            { return _ImageUnloaded; }
+            set
+            { 
+                if (_ImageUnloaded == value)
+                    return;
+                _ImageUnloaded = value;
+                RaisePropertyChanged();
             }
         }
         #endregion
