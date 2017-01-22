@@ -17,7 +17,8 @@
         MouseLeftButtonDown="Window_MouseLeftButtonDown"
         SourceInitialized="window_SourceInitialized"
         Loaded="window_Loaded"
-        PreviewKeyDown="window_PreviewKeyDown">
+        PreviewKeyDown="window_PreviewKeyDown"
+        Topmost="{Binding ImageTopmost}">
 
     <WindowChrome.WindowChrome>
         <WindowChrome CaptionHeight="{x:Static SystemParameters.CaptionHeight}"

@@ -151,6 +151,15 @@ namespace ImageTracer.Properties {
         }
         
         /// <summary>
+        ///   画像を常に最前面に表示する。 に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string SettingWindowLabel_07 {
+            get {
+                return ResourceManager.GetString("SettingWindowLabel_07", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   設定 に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string SettingWindowTitle {

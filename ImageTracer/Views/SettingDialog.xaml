@@ -8,7 +8,8 @@
         xmlns:rs="clr-namespace:ImageTracer.Properties"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" xmlns:Custom="http://schemas.livet-mvvm.net/2011/wpf" x:Class="ImageTracer.Views.SettingDialog"
         mc:Ignorable="d"
-        Title="{x:Static rs:Resources.SettingWindowTitle}" Width="300" SizeToContent="Height" ResizeMode="CanMinimize">
+        Title="{x:Static rs:Resources.SettingWindowTitle}" Width="300" SizeToContent="Height"
+        ResizeMode="CanMinimize">
     <!-- DataContextはMainWindowViewModelが割り当てられている。 -->
     <i:Interaction.Triggers>
         <Custom:InteractionMessageTrigger MessageKey="Close" Messenger="{Binding Messenger}">
@@ -16,25 +17,26 @@
         </Custom:InteractionMessageTrigger>
     </i:Interaction.Triggers>
     <StackPanel Margin="10">
-        <CheckBox Content="{x:Static rs:Resources.SettingWindowLabel_01}" IsChecked="{Binding HoldAspectRatio, Mode=TwoWay}"/>
-        <Grid Height="168" Margin="0,0,0,10">
+        <CheckBox Content="{x:Static rs:Resources.SettingWindowLabel_07}" IsChecked="{Binding ImageTopmost, Mode=TwoWay}" Margin="0,0,0,10"/>
+        <CheckBox Content="{x:Static rs:Resources.SettingWindowLabel_01}" IsChecked="{Binding HoldAspectRatio, Mode=TwoWay}" Margin="0,0,0,10"/>
+        <Grid Margin="0,0,0,10">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="73*"/>
-                <ColumnDefinition Width="154*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="35"/>
             </Grid.RowDefinitions>
-            <TextBlock TextWrapping="Wrap" Text="{x:Static rs:Resources.SettingWindowLabel_02}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,20" Height="16" Width="12"/>
-            <TextBlock HorizontalAlignment="Left" Grid.Row="1" TextWrapping="Wrap" Text="{x:Static rs:Resources.SettingWindowLabel_03}" VerticalAlignment="Center" Margin="0,20" Height="16" Width="12"/>
-            <TextBlock HorizontalAlignment="Left" Grid.Row="2" TextWrapping="Wrap" Text="{x:Static rs:Resources.SettingWindowLabel_04}" VerticalAlignment="Center" Margin="0,20" Height="16" Width="48"/>
-            <TextBox TextWrapping="Wrap" VerticalAlignment="Center" Grid.Column="1" Margin="10,19,9.667,19" Text="{Binding Height, FallbackValue=480, StringFormat=\{0:D\}}" TextAlignment="Right" Height="18"/>
-            <TextBox Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Center" Grid.Column="1" Margin="10,19,9.667,19" Text="{Binding Width, FallbackValue=640, StringFormat=\{0:D\}}" TextAlignment="Right" Height="18"/>
-            <TextBox x:Name="_alphaTextBox" TextWrapping="Wrap" Text="{Binding Value, ElementName=_alphaSlider, FallbackValue=0.500, StringFormat=\{0:F3\}}" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" Margin="10,19,9.667,19" TextAlignment="Right" Height="18"/>
-            <Slider x:Name="_alphaSlider" VerticalAlignment="Center" Grid.Column="2" Grid.Row="2" Maximum="1" Value="{Binding Alpha}" LargeChange="0.2" SmallChange="0.001" Height="18"/>
+            <TextBlock TextWrapping="Wrap" Text="{x:Static rs:Resources.SettingWindowLabel_02}" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <TextBlock HorizontalAlignment="Left" Grid.Row="1" TextWrapping="Wrap" Text="{x:Static rs:Resources.SettingWindowLabel_03}" VerticalAlignment="Center"/>
+            <TextBlock HorizontalAlignment="Left" Grid.Row="2" TextWrapping="Wrap" Text="{x:Static rs:Resources.SettingWindowLabel_04}" VerticalAlignment="Center"/>
+            <TextBox TextWrapping="Wrap" VerticalAlignment="Center" Grid.Column="1" Margin="10,0,5,0" Text="{Binding Height, FallbackValue=480, StringFormat=\{0:D\}}" TextAlignment="Right" Height="18" Width="Auto"/>
+            <TextBox Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Center" Grid.Column="1" Margin="10,0,5,0" Text="{Binding Width, FallbackValue=640, StringFormat=\{0:D\}}" TextAlignment="Right" Height="18" Width="Auto"/>
+            <TextBox x:Name="_alphaTextBox" TextWrapping="Wrap" Text="{Binding Value, ElementName=_alphaSlider, FallbackValue=0.500, StringFormat=\{0:F3\}}" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" Margin="10,0,5,0" TextAlignment="Right" Height="18" Width="Auto"/>
+            <Slider x:Name="_alphaSlider" VerticalAlignment="Center" Grid.Column="2" Grid.Row="2" Maximum="1" Value="{Binding Alpha}" LargeChange="0.2" SmallChange="0.001" Height="18" Margin="5,0,0,0"/>
             <TextBlock Grid.Column="2" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{x:Static rs:Resources.SettingWindowLabel_05}" VerticalAlignment="Center" Height="16"/>
             <TextBlock Grid.Column="2" HorizontalAlignment="Left" Grid.Row="1" TextWrapping="Wrap" Text="{x:Static rs:Resources.SettingWindowLabel_05}" VerticalAlignment="Center" Height="16"/>
         </Grid>
