@@ -179,7 +179,7 @@ namespace ImageTracer.ViewModels
             { return _Alpha; }
             set
             {
-                if (_Alpha == value)
+                if ((_Alpha == value) || (value < 0.002))
                     return;
                 _Alpha = value;
                 RaisePropertyChanged();
