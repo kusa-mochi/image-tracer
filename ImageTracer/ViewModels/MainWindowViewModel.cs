@@ -75,7 +75,7 @@ namespace ImageTracer.ViewModels
             get
             { return _CurrentImage; }
             set
-            { 
+            {
                 if (_CurrentImage == value)
                     return;
                 _CurrentImage = value;
@@ -92,7 +92,7 @@ namespace ImageTracer.ViewModels
             get
             { return _ImageTopmost; }
             set
-            { 
+            {
                 if (_ImageTopmost == value)
                     return;
                 _ImageTopmost = value;
@@ -195,7 +195,7 @@ namespace ImageTracer.ViewModels
             get
             { return _ImageLoaded; }
             set
-            { 
+            {
                 if (_ImageLoaded == value)
                     return;
                 _ImageLoaded = value;
@@ -213,7 +213,7 @@ namespace ImageTracer.ViewModels
             get
             { return _ImageUnloaded; }
             set
-            { 
+            {
                 if (_ImageUnloaded == value)
                     return;
                 _ImageUnloaded = value;
@@ -237,9 +237,20 @@ namespace ImageTracer.ViewModels
             }
         }
 
+        private TransitionMessage _settingDialogTransitionMessage = null;
+        public TransitionMessage SettingDialogTransitionMessage
+        {
+            get { return _settingDialogTransitionMessage; }
+            set { _settingDialogTransitionMessage = value; }
+        }
+
         public void Show()
         {
-            Messenger.Raise(new TransitionMessage(this, "ShowSettingDialogCommand"));
+            // 既に設定画面が開いている場合は何もしない。
+            if (_settingDialogTransitionMessage != null) return;
+
+            _settingDialogTransitionMessage = new TransitionMessage(this, "ShowSettingDialogCommand");
+            Messenger.Raise(_settingDialogTransitionMessage);
         }
         #endregion
 

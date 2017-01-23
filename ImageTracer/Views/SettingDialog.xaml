@@ -6,10 +6,10 @@
         xmlns:vm="clr-namespace:ImageTracer.ViewModels"
         xmlns:local="clr-namespace:ImageTracer.Views"
         xmlns:rs="clr-namespace:ImageTracer.Properties"
-        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" xmlns:Custom="http://schemas.livet-mvvm.net/2011/wpf" x:Class="ImageTracer.Views.SettingDialog"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" xmlns:Custom="http://schemas.livet-mvvm.net/2011/wpf" x:Name="_settingDialog" x:Class="ImageTracer.Views.SettingDialog"
         mc:Ignorable="d"
         Title="{x:Static rs:Resources.SettingWindowTitle}" Width="300" SizeToContent="Height"
-        ResizeMode="CanMinimize">
+        ResizeMode="CanMinimize" Closed="_settingDialog_Closed">
     <!-- DataContextはMainWindowViewModelが割り当てられている。 -->
     <i:Interaction.Triggers>
         <Custom:InteractionMessageTrigger MessageKey="Close" Messenger="{Binding Messenger}">

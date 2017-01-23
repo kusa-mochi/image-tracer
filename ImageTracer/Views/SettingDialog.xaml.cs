@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
+using ImageTracer.ViewModels;
+
 namespace ImageTracer.Views
 {
     /// <summary>
@@ -22,6 +24,11 @@ namespace ImageTracer.Views
         public SettingDialog()
         {
             InitializeComponent();
+        }
+
+        private void _settingDialog_Closed(object sender, EventArgs e)
+        {
+            ((MainWindowViewModel)this.DataContext).SettingDialogTransitionMessage = null;
         }
     }
 }
