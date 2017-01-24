@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <style type="text/css">
+            body{
+                font-family: Meiryo,メイリオ,sans-serif;
+            }
+            .AppName:before{
+            	content:"画像半蔵";
+            }
+            #SOFTWARE_SUMMERY img{
+            	max-width:400pt;
+            	max-height:350pt;
+            	border-width:0.5pt;
+            	border-style:solid;
+            	border-color:#aaaaaa;
+            }
+            #SOFTWARE_DETAIL table{
+                font-size:12pt;
+                border-collapse: collapse;
+            }
+            #SOFTWARE_DETAIL tr{
+                height:25pt;
+            }
+            #SOFTWARE_DETAIL td{
+                padding:5pt;
+                border-width: 1pt;
+                border-color: #555555;
+                border-style: solid;
+            }
+            .FirstColumn{
+                font-weight:700;
+                color:#ffffff;
+                background-color: #333333;
+            }
+            #HOW_TO img{
+                max-width: 350pt;
+                max-height:300pt;
+                border-width:0.5pt;
+            	border-style:solid;
+            	border-color:#aaaaaa;
+            }
+        </style>
+        <title>画像半蔵</title>
+    </head>
+    <body>
+        <div id="TITLE">
+            <h1 class="AppName"></h1>
+        </div>
+        <div id="CONTENTS_TABLE">
+            <h2>目次</h2>
+            <ul>
+            	<li><a href="SOFTWARE_SUMMERY">本ソフトウェアの概要</a></li>
+                <li><a href="#SOFTWARE_DETAIL">本ソフトウェアの詳細</a></li>
+                <li><a href="#HOW_TO">使い方</a>
+                    <ol>
+                        <li><a href="#INSTALL">インストール</a></li>
+                        <li><a href="#BOOT">起動</a></li>
+                        <li><a href="#OPEN-IMAGE">画像を開く</a></li>
+                        <li><a href="#RESIZE-IMAGE-DRAG-GRIP">画像の表示サイズ変更（マウス操作）</a></li>
+                        <li><a href="#MOVE-IMAGE">画像の移動</a></li>
+                        <li><a href="#OPEN-SETTING-WINDOW">設定画面を開く</a></li>
+                        <li><a href="#SETTING-TOPMOST">画像の最前面表示の切替</a></li>
+                        <li><a href="#SETTING-HOLD-ASPECT-RATIO">画像の縦横比維持の切替</a></li>
+                        <li><a href="#SETTING-RESIZE-IMAGE">画像の表示サイズ変更（数値入力）</a></li>
+                        <li><a href="#SETTING-OPACITY">画像表示の透明度変更</a></li>
+                        <li><a href="#SETTING-CLOSE">設定画面の終了</a></li>
+                        <li><a href="#CLOSE-APPLICATION">アプリの終了</a></li>
+                        <li><a href="#UNINSTALL">アンインストール</a></li>
+                    </ol>
+                </li>
+                <li><a href="#VERSION_HISTORY">更新履歴</a></li>
+            </ul>
+        </div>
+        <div id="SOFTWARE_SUMMERY">
+        <h2>本ソフトウェアの概要</h2>
+        <img src="img/summary.PNG">
+        <p>
+        	本ソフトウェアを使うと，画像を画面上に直接半透明で表示できます。
+        </p>
+        <p>
+			透明度や表示サイズを自在に設定できるので，別の画像に重ねて表示して2枚の画像を詳細に比較するなどの使い方ができます。
+        </p>
+        </div>
+        <div id="SOFTWARE_DETAIL">
+            <h2>本ソフトウェアの詳細</h2>
+            <table>
+                <tr>
+                    <td class="FirstColumn">ソフトウェア名</td>
+                    <td class="DetailData AppName"></td>
+                </tr>
+                <tr>
+                    <td class="FirstColumn">バージョン</td>
+                    <td class="DetailData">1.2</td>
+                </tr>
+                <tr>
+                    <td class="FirstColumn">価格</td>
+                    <td class="DetailData">無料（フリーソフト）</td>
+                </tr>
+                <tr>
+                    <td class="FirstColumn">ファイル名</td>
+                    <td class="DetailData AppName">.exe</td>
+                </tr>
+                <tr>
+                    <td class="FirstColumn">著作権者</td>
+                    <td class="DetailData">もち</td>
+                </tr>
+                <tr>
+                    <td class="FirstColumn">製作日</td>
+                    <td class="DetailData">ver.1.2&nbsp;&nbsp;2017.1.24<br/>ver.1.1&nbsp;&nbsp;2017.1.19<br/>ver.1.0&nbsp;&nbsp;2017.1.15</td>
+                </tr>
+                <tr>
+                    <td class="FirstColumn">著作権者の連絡先</td>
+                    <td class="DetailData"><a href="mailto:whoatemyapplepie@gmail.com">whoatemyapplepie@gmail.com</a></td>
+                </tr>
+                <tr>
+                    <td class="FirstColumn">動作環境</td>
+                    <td class="DetailData">Windows 7/8.1/10<br>x64/x86<br>.NET 4.5.x/4.6</td>
+                </tr>
+                <tr>
+                    <td class="FirstColumn">開発環境</td>
+                    <td class="DetailData">Windows 10 64bit<br>Microsoft Surface Pro 3<br>Core i5</td>
+                </tr>
+                <tr>
+                    <td class="FirstColumn">ライセンス形態</td>
+                    <td class="DetailData">GNU LESSER GENERAL PUBLIC LICENSE Version 3<br>（別ファイル「LISENCE」を参照してください）</td>
+                </tr>
+            </table>
+        </div>
+        <div id="HOW_TO">
+            <h2>使い方</h2>
+            <ul>
+                <li id="INSTALL">インストール</li>
+                	<ol>
+                        <li><span class="AppName">.zipを任意のフォルダに解凍する。</li>
+                    </ol>
+                </li>
+                <p/>
+                <li id="BOOT">起動<br>
+                    <ol>
+                        <li><span class="AppName">.exeを直接実行する。</li>
+                        <li>
+                        	次の画像が半透明の状態で画面上に表示される。<br>
+                        	<img src="img/dummy.png"/>
+                        </li>
+                    </ol>
+                </li>
+                <p/>
+                <li id="OPEN-IMAGE">画像を開く<br>
+                    <ol>
+                        <li>表示された画像上で右クリックする。</li>
+                        <li>「画像を開く」をクリックする。</li>
+                        <li>表示されるダイアログから画像（*.bmp,*.png,*.gif,*.jpg,*.jpeg,*.tiff,*.tifのいずれか）を選択し，「開く」ボタンをクリックする。</li>
+                        <li>選択した画像が，設定された透明度（後述）で画面上に表示される。</li>
+                    </ol>
+                </li>
+                <p/>
+                <li id="RESIZE-IMAGE-DRAG-GRIP">画像の表示サイズ変更（マウス操作）<br>
+                	ウィンドウのサイズ変更と同じ要領で画像サイズを変更できる。
+                    <ol>
+                        <li>表示されている画像の縁にマウスポインタを移動させると，ポインタの形状がサイズ変更時のものに変化する。</li>
+                        <li>ドラッグすると，画像サイズを変更できる。画像の縦横比を維持する設定（後述）が有効な場合，画像は縦横比を維持しながらサイズが変更される。</li>
+                    </ol>
+                </li>
+                <p/>
+                <li id="MOVE-IMAGE">画像の移動<br>
+                    画像のドラッグまたはキーボードのカーソルキーにより画像を移動できる。
+                </li>
+                <p/>
+                <li id="OPEN-SETTING-WINDOW">設定画面を開く<br>
+                    <ol>
+                        <li>画像上で右クリックする。</li>
+                        <li>
+                        	「設定」をクリックすると，次の例のような設定画面が表示される。<br>
+                        	<img src="img/setting_dialog.png"/>
+                        </li>
+                    </ol>
+                </li>
+                <p/>
+                <li id="SETTING-TOPMOST">画像の最前面表示の切替<br>
+                	<ul>
+                		<li>設定画面の「画像を常に最前面に表示する。」にチェックを入れると，本アプリの画像が別のアプリよりも前面に表示されるようになる。</li>
+                		<li>設定画面の「画像を常に最前面に表示する。」のチェックを外すと，本アプリがアクティブな場合にのみ画像が最前面に表示されるようになる。（通常のアプリの挙動と同じ）</li>
+                	</ul>
+                </li>
+                <p/>
+                <li id="SETTING-HOLD-ASPECT-RATIO">画像の縦横比維持の切替<br>
+                    <ul>
+                        <li>設定画面の「画像の縦横比を維持する。」にチェックを入れると，それ以降の画像サイズ変更時に画像の縦横比が維持される。</li>
+                        <li>設定画面の「画像の縦横比を維持する。」のチェックを外すと，それ以降の画像サイズを縦横比を維持せず自由に変更できる。</li>
+                    </ul>
+                </li>
+                <p/>
+                <li id="SETTING-RESIZE-IMAGE">画像の表示サイズ変更（数値入力）<br>
+                    <ol>
+                        <li>設定画面の「縦」または「横」の数値を書き換えることで表示されている画像のサイズを変更できる。</li>
+                    </ol>
+                    ※数値入力後，入力欄からフォーカスを外すと画像サイズに反映される。「画像の縦横比を維持する。」にチェックが入っている場合，<br/>
+                    「縦」「横」どちらかの値を書き換えると，縦横比を維持するように他方の値が連動して更新される。
+                </li>
+                <p/>
+                <li id="SETTING-OPACITY">画像表示の不透明度変更<br>
+                    <ol>
+                        <li>設定画面の「不透明度」の数値の書き換えまたはスライダーの操作により，画像の不透明度を変更できる。</li>
+                        <li>数値は0.002～1.000の間で変更でき，0.002で画像がほぼ完全な透明，1.000で完全な不透明となる。</li>
+                    </ol>
+                </li>
+                <p/>
+                <li id="SETTING-CLOSE">設定画面の終了<br>
+                    <ol>
+                        <li>設定画面の「閉じる」ボタンをクリックする。</li>
+                    </ol>
+                </li>
+                <p/>
+                <li id="CLOSE-APPLICATION">アプリの終了<br>
+                    <ol>
+                        <li>画像上で右クリックする。</li>
+                        <li>「閉じる」をクリックすると，アプリケーションが終了する。</li>
+                    </ol>
+                </li>
+                <p/>
+                <li id="UNINSTALL">アンインストール</li>
+                <span class="AppName">.zipおよびこれを解凍して展開されたファイルを削除してください。
+            </ul>
+        </div>
+        <div id="VERSION_HISTORY">
+        	<h2>更新履歴</h2>
+        	<ul>
+        		<li>ver.1.2 (2017.1.24)</li>
+                	<ul>
+                		<li>画像を常に最前面に表示する設定を追加。既定で常に最前面に表示するように変更。</li>
+                		<li>不透明度を0にした場合に画像のクリックイベントが発生しない不具合を修正。（不透明度の最小値を0.002に変更）</li>
+                		<li>設定画面が複数開けてしまう不具合を修正。</li>
+                		<li>設定画面のレイアウトを調整。</li>
+                    </ul>
+                </li>
+                <p/>
+                <li>ver.1.1 (2017.1.19)</li>
+                	<ul>
+                		<li>64/32bit両対応</li>
+                        <li>設定画面で「不透明度」の数値が表示崩れを起こす不具合を修正。</li>
+						<li>設定画面に最小化ボタンを追加。</li>
+                    </ul>
+                </li>
+                <p/>
+                <li>ver.1.0 (2017.1.15)</li>
+                	<ul>
+                        <li>初回リリース。</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </body>
+</html>
