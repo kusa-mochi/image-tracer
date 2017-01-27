@@ -61,7 +61,7 @@ namespace ImageTracer.Properties {
         }
         
         /// <summary>
-        ///   右クリックでメニューを開く に類似しているローカライズされた文字列を検索します。
+        ///   Right Click to Open Menu. に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string MainWindowLabel_01 {
             get {
@@ -70,7 +70,7 @@ namespace ImageTracer.Properties {
         }
         
         /// <summary>
-        ///   画像を開く(_O) に類似しているローカライズされた文字列を検索します。
+        ///   Open an Image(_O) に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string MenuLabel_01 {
             get {
@@ -79,7 +79,7 @@ namespace ImageTracer.Properties {
         }
         
         /// <summary>
-        ///   設定(_E) に類似しているローカライズされた文字列を検索します。
+        ///   Setting(_E) に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string MenuLabel_02 {
             get {
@@ -88,7 +88,7 @@ namespace ImageTracer.Properties {
         }
         
         /// <summary>
-        ///   閉じる(_X) に類似しているローカライズされた文字列を検索します。
+        ///   Quit(_X) に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string MenuLabel_03 {
             get {
@@ -97,7 +97,7 @@ namespace ImageTracer.Properties {
         }
         
         /// <summary>
-        ///   画像の縦横比を維持する。 に類似しているローカライズされた文字列を検索します。
+        ///   Hold an Aspect Ratio に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string SettingWindowLabel_01 {
             get {
@@ -106,7 +106,7 @@ namespace ImageTracer.Properties {
         }
         
         /// <summary>
-        ///   縦 に類似しているローカライズされた文字列を検索します。
+        ///   Height に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string SettingWindowLabel_02 {
             get {
@@ -115,7 +115,7 @@ namespace ImageTracer.Properties {
         }
         
         /// <summary>
-        ///   横 に類似しているローカライズされた文字列を検索します。
+        ///   Width に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string SettingWindowLabel_03 {
             get {
@@ -124,7 +124,7 @@ namespace ImageTracer.Properties {
         }
         
         /// <summary>
-        ///   不透明度 に類似しているローカライズされた文字列を検索します。
+        ///   Opacity に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string SettingWindowLabel_04 {
             get {
@@ -142,7 +142,7 @@ namespace ImageTracer.Properties {
         }
         
         /// <summary>
-        ///   閉じる に類似しているローカライズされた文字列を検索します。
+        ///   Close に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string SettingWindowLabel_06 {
             get {
@@ -151,7 +151,7 @@ namespace ImageTracer.Properties {
         }
         
         /// <summary>
-        ///   画像を常に最前面に表示する。 に類似しているローカライズされた文字列を検索します。
+        ///   Always Displayed in Foreground. に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string SettingWindowLabel_07 {
             get {
@@ -160,7 +160,7 @@ namespace ImageTracer.Properties {
         }
         
         /// <summary>
-        ///   設定 に類似しているローカライズされた文字列を検索します。
+        ///   Setting に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string SettingWindowTitle {
             get {

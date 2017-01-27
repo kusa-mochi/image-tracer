@@ -118,39 +118,39 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="MainWindowLabel_01" xml:space="preserve">
-    <value>Right Click to Open Menu.</value>
+    <value>右クリックでメニューを開く</value>
   </data>
   <data name="MenuLabel_01" xml:space="preserve">
-    <value>Open an Image(_O)</value>
+    <value>画像を開く(_O)</value>
   </data>
   <data name="MenuLabel_02" xml:space="preserve">
-    <value>Setting(_E)</value>
+    <value>設定(_E)</value>
   </data>
   <data name="MenuLabel_03" xml:space="preserve">
-    <value>Quit(_X)</value>
+    <value>閉じる(_X)</value>
   </data>
   <data name="SettingWindowLabel_01" xml:space="preserve">
-    <value>Hold an Aspect Ratio</value>
+    <value>画像の縦横比を維持する。</value>
   </data>
   <data name="SettingWindowLabel_02" xml:space="preserve">
-    <value>Height</value>
+    <value>縦</value>
   </data>
   <data name="SettingWindowLabel_03" xml:space="preserve">
-    <value>Width</value>
+    <value>横</value>
   </data>
   <data name="SettingWindowLabel_04" xml:space="preserve">
-    <value>Opacity</value>
+    <value>不透明度</value>
   </data>
   <data name="SettingWindowLabel_05" xml:space="preserve">
     <value>px</value>
   </data>
   <data name="SettingWindowLabel_06" xml:space="preserve">
-    <value>Close</value>
+    <value>閉じる</value>
   </data>
   <data name="SettingWindowLabel_07" xml:space="preserve">
-    <value>Always Displayed in Foreground.</value>
+    <value>画像を常に最前面に表示する。</value>
   </data>
   <data name="SettingWindowTitle" xml:space="preserve">
-    <value>Setting</value>
+    <value>設定</value>
   </data>
 </root>
