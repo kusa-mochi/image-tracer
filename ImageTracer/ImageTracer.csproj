@@ -170,6 +170,7 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>copy /Y "$(ProjectDir)Documents\read me.html" "$(ProjectDir)$(OutDir)read me.html"
+copy /Y "$(ProjectDir)Documents\LICENSE" "$(ProjectDir)$(OutDir)LICENSE"
 if not exist "$(ProjectDir)$(OutDir)img\" {
 mkdir "$(ProjectDir)$(OutDir)img"
 )
