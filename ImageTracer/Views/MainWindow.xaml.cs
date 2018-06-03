@@ -123,6 +123,7 @@ namespace ImageTracer.Views
             {
                 if (!_vm.HoldAspectRatio) return IntPtr.Zero;
 
+                // MainWindowの範囲を表す四角形
                 var rect = (RECT)Marshal.PtrToStructure(lParam, typeof(RECT));
 
                 var w = rect.right - rect.left - this._horizontalMargin;

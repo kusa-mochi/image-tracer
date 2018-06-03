@@ -79,6 +79,16 @@ namespace ImageTracer.ViewModels
                 if (_CurrentImage == value)
                     return;
                 _CurrentImage = value;
+                if (HoldAspectRatio)
+                {
+                    _holdRatio = _CurrentImage.Height / _CurrentImage.Width;
+                }
+
+                _sizeInitializing = true;
+                Width = (int)_CurrentImage.Width;
+                Height = (int)_CurrentImage.Height;
+                _sizeInitializing = false;
+
                 RaisePropertyChanged();
             }
         }
@@ -117,6 +127,7 @@ namespace ImageTracer.ViewModels
                 if (value)
                 {
                     FixRateCommand.Execute(null);
+                    _holdRatio = (double)_Height / _Width;
                 }
             }
         }
@@ -133,15 +144,16 @@ namespace ImageTracer.ViewModels
             {
                 if (_Height == value)
                     return;
-                int h = _Height;
-                _Height = value;
 
-                if (_HoldAspectRatio)
+                if (_HoldAspectRatio && !_sizeInitializing)
                 {
-                    _Width = (int)((double)_Width * value / h);
+                    _Width = (int)((double)value / _holdRatio);
+                    RaisePropertyChanged("Width");
                 }
 
-                RaisePropertyChanged();
+                _Height = value;
+
+                RaisePropertyChanged("Height");
             }
         }
         #endregion
@@ -157,15 +169,16 @@ namespace ImageTracer.ViewModels
             {
                 if (_Width == value)
                     return;
-                int w = _Width;
-                _Width = value;
 
-                if (_HoldAspectRatio)
+                if (_HoldAspectRatio && !_sizeInitializing)
                 {
-                    _Height = (int)((double)_Height * value / w);
+                    _Height = (int)((double)value * _holdRatio);
+                    RaisePropertyChanged("Height");
                 }
 
-                RaisePropertyChanged();
+                _Width = value;
+
+                RaisePropertyChanged("Width");
             }
         }
         #endregion
@@ -278,5 +291,16 @@ namespace ImageTracer.ViewModels
         #region FixRateCommand
         public ICommand FixRateCommand { get; set; }
         #endregion
+
+        /// <summary>
+        /// Height / Width 比
+        /// </summary>
+        private double _holdRatio = 1.0;
+
+        /// <summary>
+        /// HoldAspectRatioプロパティがtrueのときに，
+        /// WidthまたはHeightを個別に変更する必要がある場合にtrueにする。
+        /// </summary>
+        private bool _sizeInitializing = false;
     }
 }
