@@ -75,12 +75,13 @@
             ContextMenu="{StaticResource MainContextMenu}"
             Opacity="{Binding Alpha, FallbackValue=0.5}"
             Stretch="Fill"
-            Visibility="{Binding ImageLoaded, Converter={StaticResource b2v}, FallbackValue=Visible, Mode=OneWay}"/>
+            Visibility="{Binding ImageLoaded, Converter={StaticResource b2v}, FallbackValue=Visible, Mode=OneWay}" AllowDrop="True" DragOver="_image_DragOver" Drop="_image_Drop"/>
         <Grid
+            x:Name="_gridOverImage"
             Background="#FF0070C0"
             ContextMenu="{StaticResource MainContextMenu}"
             Opacity="{Binding Alpha, FallbackValue=0.5}"
-            Visibility="{Binding ImageUnloaded, Converter={StaticResource b2v}, FallbackValue=Collapsed, Mode=OneWay}">
+            Visibility="{Binding ImageUnloaded, Converter={StaticResource b2v}, FallbackValue=Collapsed, Mode=OneWay}" AllowDrop="True" DragOver="_image_DragOver" Drop="_image_Drop">
             <TextBlock Text="{x:Static rs:Resources.MainWindowLabel_01}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="32" Foreground="#FFFEFEFE"/>
         </Grid>
     </Grid>

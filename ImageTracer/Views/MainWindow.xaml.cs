@@ -235,6 +235,45 @@ namespace ImageTracer.Views
             this.GetFixRate();
         }
 
+        private bool IsValidDataExtension(string ext)
+        {
+            switch (ext)
+            {
+                case ".bmp":
+                    break;
+                case ".BMP":
+                    break;
+                case ".gif":
+                    break;
+                case ".GIF":
+                    break;
+                case ".jpg":
+                    break;
+                case ".JPG":
+                    break;
+                case ".jpeg":
+                    break;
+                case ".JPEG":
+                    break;
+                case ".png":
+                    break;
+                case ".PNG":
+                    break;
+                case ".tif":
+                    break;
+                case ".TIF":
+                    break;
+                case ".tiff":
+                    break;
+                case ".TIFF":
+                    break;
+                default:
+                    return false;
+            }
+
+            return true;
+        }
+
         private void window_PreviewKeyDown(object sender, KeyEventArgs e)
         {
             switch (e.Key)
@@ -254,6 +293,48 @@ namespace ImageTracer.Views
                 default:
                     // do nothing.
                     break;
+            }
+        }
+
+        private void _image_DragOver(object sender, DragEventArgs e)
+        {
+            // ファイルをドロップされた場合のみ e.Handled を True にする
+            e.Handled = e.Data.GetDataPresent(DataFormats.FileDrop);
+
+            if (e.Handled)
+            {
+                // ドラッグしている最初のファイルのファイル名を得る。
+                string filename = ((string[])e.Data.GetData(DataFormats.FileDrop))[0];
+
+                // ファイルの拡張子
+                string ext = System.IO.Path.GetExtension(filename);
+
+                // 表示できるデータの拡張子のときのみ、マウスポインタのアイコンを＋記号に変化させる。
+                e.Effects = IsValidDataExtension(ext) ? DragDropEffects.Copy : DragDropEffects.None;
+            }
+        }
+
+        private void _image_Drop(object sender, DragEventArgs e)
+        {
+            // ファイルをドロップされた場合のみ e.Handled を True にする
+            e.Handled = e.Data.GetDataPresent(DataFormats.FileDrop);
+
+            if (e.Handled)
+            {
+                // ドラッグしている最初のファイルのファイル名を得る。
+                string filename = ((string[])e.Data.GetData(DataFormats.FileDrop))[0];
+
+                // ファイルの拡張子
+                string ext = System.IO.Path.GetExtension(filename);
+
+                if (!IsValidDataExtension(ext)) return;
+
+                _vm.ImageLoaded = true;
+                BitmapImage bm = FileToBitmapImage(filename);
+                _vm.CurrentImage = bm;
+                this.Width = bm.Width;
+                this.Height = bm.Height;
+                this.GetFixRate();
             }
         }
     }
