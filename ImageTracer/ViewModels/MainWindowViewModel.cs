@@ -113,6 +113,10 @@ namespace ImageTracer.ViewModels
                 if (_ImageTopmost == value)
                     return;
                 _ImageTopmost = value;
+                if (!value)
+                {
+                    ThroughHit = false;
+                }
                 RaisePropertyChanged();
             }
         }
