@@ -26,10 +26,6 @@
                       UseAeroCaptionButtons="False"/>
     </WindowChrome.WindowChrome>
 
-    <Window.DataContext>
-        <vm:MainWindowViewModel x:Name="_vm"/>
-    </Window.DataContext>
-
     <Window.Resources>
         <ContextMenu x:Key="MainContextMenu">
             <MenuItem x:Name="FileOpenMenuItem" Header="{x:Static rs:Resources.MenuLabel_01}" Click="FileOpenMenuItem_Click"/>

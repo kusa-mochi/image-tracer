@@ -16,6 +16,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.Win32;
 using ImageTracer.Common;
+using ImageTracer.ViewModels;
 
 namespace ImageTracer.Views
 {
@@ -35,6 +36,7 @@ namespace ImageTracer.Views
         private double _fixRate;
         private double _horizontalMargin;
         private double _verticalMargin;
+        private MainWindowViewModel _vm = null;
 
         public MainWindow()
         {
@@ -45,6 +47,16 @@ namespace ImageTracer.Views
                 ExecuteHandler = FixRateCommandExecute,
                 CanExecuteHandler = CanFixRateCommandExecute
             };
+
+            _vm = new MainWindowViewModel();
+            _vm.ThroughHitChanged += OnThroughHitChanged;
+            this.DataContext = _vm;
+        }
+
+        private void OnThroughHitChanged(object sender, ThroughHitChangedEventArgs e)
+        {
+            var hwnd = new WindowInteropHelper(this).Handle;
+            WindowsServices.SetWindowExTransparent(hwnd, e.NewValue);
         }
 
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -221,6 +233,7 @@ namespace ImageTracer.Views
             }
             set
             {
+                if (_vm == null) return;
                 _vm.FixRateCommand = value;
             }
         }

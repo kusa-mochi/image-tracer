@@ -17,7 +17,8 @@
         </Custom:InteractionMessageTrigger>
     </i:Interaction.Triggers>
     <StackPanel Margin="10">
-        <CheckBox Content="{x:Static rs:Resources.SettingWindowLabel_07}" IsChecked="{Binding ImageTopmost, Mode=TwoWay}" Margin="0,0,0,10"/>
+        <CheckBox x:Name="CheckBox_TopMost" Content="{x:Static rs:Resources.SettingWindowLabel_07}" IsChecked="{Binding ImageTopmost, Mode=TwoWay}" Margin="0,0,0,10"/>
+        <CheckBox Content="{x:Static rs:Resources.SettingWindowLabel_08}" IsChecked="{Binding ThroughHit, Mode=TwoWay}" IsEnabled="{Binding IsChecked, ElementName=CheckBox_TopMost}" Margin="16,0,0,10"/>
         <CheckBox Content="{x:Static rs:Resources.SettingWindowLabel_01}" IsChecked="{Binding HoldAspectRatio, Mode=TwoWay}" Margin="0,0,0,10"/>
         <Grid Margin="0,0,0,10">
             <Grid.ColumnDefinitions>
