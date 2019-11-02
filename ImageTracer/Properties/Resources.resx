@@ -150,6 +150,9 @@
   <data name="SettingWindowLabel_07" xml:space="preserve">
     <value>Always Displayed in Foreground.</value>
   </data>
+  <data name="SettingWindowLabel_08" xml:space="preserve">
+    <value>Through Mouse</value>
+  </data>
   <data name="SettingWindowTitle" xml:space="preserve">
     <value>Setting</value>
   </data>

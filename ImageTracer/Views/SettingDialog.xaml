@@ -19,6 +19,7 @@
     <StackPanel Margin="10">
         <CheckBox Content="{x:Static rs:Resources.SettingWindowLabel_07}" IsChecked="{Binding ImageTopmost, Mode=TwoWay}" Margin="0,0,0,10"/>
         <CheckBox Content="{x:Static rs:Resources.SettingWindowLabel_01}" IsChecked="{Binding HoldAspectRatio, Mode=TwoWay}" Margin="0,0,0,10"/>
+        <CheckBox Content="{x:Static rs:Resources.SettingWindowLabel_08}" IsChecked="{Binding HitUnavailable, Mode=TwoWay}" Margin="0,0,0,10"/>
         <Grid Margin="0,0,0,10">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
