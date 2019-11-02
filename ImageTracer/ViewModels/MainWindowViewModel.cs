@@ -14,6 +14,7 @@ using Livet.Messaging.IO;
 using Livet.EventListeners;
 using Livet.Messaging.Windows;
 
+using ImageTracer.Common;
 using ImageTracer.Views;
 using ImageTracer.Models;
 
@@ -66,6 +67,12 @@ namespace ImageTracer.ViewModels
         public void Initialize()
         {
         }
+
+        #region イベント
+
+        public event EventHandler<ThroughHitChangedEventArgs> ThroughHitChanged;
+
+        #endregion
 
         #region CurrentImage変更通知プロパティ
         private BitmapImage _CurrentImage = null;
@@ -233,6 +240,31 @@ namespace ImageTracer.ViewModels
                 RaisePropertyChanged();
             }
         }
+        #endregion
+
+        #region ThroughHit変更通知プロパティ
+
+        private bool _ThroughHit = false;
+
+        public bool ThroughHit
+        {
+            get
+            {
+                return _ThroughHit;
+            }
+
+            set
+            {
+                if (_ThroughHit == value) return;
+                _ThroughHit = value;
+                if (ThroughHitChanged != null)
+                {
+                    ThroughHitChanged.Invoke(this, new ThroughHitChangedEventArgs { NewValue = value });
+                }
+                RaisePropertyChanged();
+            }
+        }
+
         #endregion
 
         #region ShowSettingDialogCommand
