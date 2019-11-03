@@ -151,7 +151,7 @@
     <value>Always Displayed in Foreground.</value>
   </data>
   <data name="SettingWindowLabel_08" xml:space="preserve">
-    <value>Through Mouse</value>
+    <value>Through Mouse Event.</value>
   </data>
   <data name="SettingWindowTitle" xml:space="preserve">
     <value>Setting</value>

@@ -160,7 +160,7 @@ namespace ImageTracer.Properties {
         }
         
         /// <summary>
-        ///   Through Mouse に類似しているローカライズされた文字列を検索します。
+        ///   Through Mouse Event. に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string SettingWindowLabel_08 {
             get {

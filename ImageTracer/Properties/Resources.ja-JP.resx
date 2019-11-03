@@ -151,7 +151,7 @@
     <value>画像を常に最前面に表示する。</value>
   </data>
   <data name="SettingWindowLabel_08" xml:space="preserve">
-    <value>マウス透過</value>
+    <value>マウス操作を透過する。</value>
   </data>
   <data name="SettingWindowTitle" xml:space="preserve">
     <value>設定</value>
