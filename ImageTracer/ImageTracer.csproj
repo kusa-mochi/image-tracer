@@ -16,6 +16,7 @@
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -28,7 +29,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -76,6 +76,15 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
     <PlatformTarget>AnyCPU</PlatformTarget>
     <OutputPath>bin\Release\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>false</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Livet">
@@ -156,6 +165,8 @@
     <EmbeddedResource Include="Properties\Resources.ja-JP.resx" />
     <EmbeddedResource Include="Properties\Resources.en-US.resx" />
     <None Include="Documents\LICENSE" />
+    <None Include="Documents\画像半蔵の取扱説明書.url" />
+    <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -164,10 +175,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="icn_image_tracer.ico" />
-    <Resource Include="Documents\img\dummy.png" />
-    <Resource Include="Documents\img\setting_dialog.png" />
-    <Resource Include="Documents\img\summary.PNG" />
-    <Content Include="Documents\read me.html" />
     <Content Include="InfrastructureAssemblies\Design\Livet.Design.dll" />
     <Content Include="InfrastructureAssemblies\Livet.dll" />
     <Content Include="InfrastructureAssemblies\Livet.XML" />
@@ -188,13 +195,9 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>copy /Y "$(ProjectDir)Documents\read me.html" "$(ProjectDir)$(OutDir)read me.html"
+    <PostBuildEvent>copy /Y "$(ProjectDir)Documents\画像半蔵の取扱説明書.url" "$(ProjectDir)$(OutDir)画像半蔵の取扱説明書.url"
 copy /Y "$(ProjectDir)Documents\LICENSE" "$(ProjectDir)$(OutDir)LICENSE"
-if not exist "$(ProjectDir)$(OutDir)img\" {
-mkdir "$(ProjectDir)$(OutDir)img"
-)
 
-copy /Y "$(ProjectDir)Documents\img\*" "$(ProjectDir)$(OutDir)img\"
 del "$(ProjectDir)$(OutDir)Livet.xml"</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
