@@ -175,7 +175,7 @@
       <DependentUpon>NotifyIconWrapper.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Documents\LICENSE" />
-    <None Include="Documents\画像半蔵の取扱説明書.url" />
+    <None Include="Documents\取扱説明書へのリンク.url" />
     <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -205,10 +205,10 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>copy /Y "$(ProjectDir)Documents\画像半蔵の取扱説明書.url" "$(ProjectDir)$(OutDir)画像半蔵の取扱説明書.url"
-copy /Y "$(ProjectDir)Documents\LICENSE" "$(ProjectDir)$(OutDir)LICENSE"
+    <PostBuildEvent>rem copy /Y "$(ProjectDir)Documents\画像半蔵の取扱説明書.url" "$(ProjectDir)$(OutDir)画像半蔵の取扱説明書.url"
+rem copy /Y "$(ProjectDir)Documents\LICENSE" "$(ProjectDir)$(OutDir)LICENSE"
 
-del "$(ProjectDir)$(OutDir)Livet.xml"</PostBuildEvent>
+rem del "$(ProjectDir)$(OutDir)Livet.xml"</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
