@@ -7,6 +7,8 @@ using System.Windows;
 
 using Livet;
 
+using ImageTracer.SystemTray;
+
 namespace ImageTracer
 {
     /// <summary>
@@ -14,10 +16,22 @@ namespace ImageTracer
     /// </summary>
     public partial class App : Application
     {
+        /// <summary>
+        /// タスクトレイに表示するアイコン
+        /// </summary>
+        private NotifyIconWrapper _notifyIcon;
+
         private void Application_Startup(object sender, StartupEventArgs e)
         {
+            ShutdownMode = ShutdownMode.OnExplicitShutdown;
+            _notifyIcon = new NotifyIconWrapper();
             DispatcherHelper.UIDispatcher = Dispatcher;
             //AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(CurrentDomain_UnhandledException);
+        }
+
+        private void Application_Exit(object sender, ExitEventArgs e)
+        {
+            _notifyIcon.Dispose();
         }
 
         //集約エラーハンドラ

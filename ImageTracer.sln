@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27428.2037
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29905.134
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageTracer", "ImageTracer\ImageTracer.csproj", "{D22617E1-780C-4A02-A200-55B190065369}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "ImageTracerSetup", "ImageTracerSetup\ImageTracerSetup.vdproj", "{EF4E2EB2-5FEF-4607-895B-B311E716D40D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,12 @@ Global
 		{D22617E1-780C-4A02-A200-55B190065369}.Release|x64.Build.0 = Release|x64
 		{D22617E1-780C-4A02-A200-55B190065369}.Release|x86.ActiveCfg = Release|x86
 		{D22617E1-780C-4A02-A200-55B190065369}.Release|x86.Build.0 = Release|x86
+		{EF4E2EB2-5FEF-4607-895B-B311E716D40D}.Debug|Any CPU.ActiveCfg = Debug
+		{EF4E2EB2-5FEF-4607-895B-B311E716D40D}.Debug|x64.ActiveCfg = Debug
+		{EF4E2EB2-5FEF-4607-895B-B311E716D40D}.Debug|x86.ActiveCfg = Debug
+		{EF4E2EB2-5FEF-4607-895B-B311E716D40D}.Release|Any CPU.ActiveCfg = Release
+		{EF4E2EB2-5FEF-4607-895B-B311E716D40D}.Release|x64.ActiveCfg = Release
+		{EF4E2EB2-5FEF-4607-895B-B311E716D40D}.Release|x86.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
