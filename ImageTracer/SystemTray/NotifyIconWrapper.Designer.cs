@@ -38,6 +38,8 @@
             // 
             // notifyIcon
             // 
+            this.notifyIcon.BalloonTipText = "終了する場合はタスクトレイのアイコンを右クリックし、「終了」をクリックしてください。";
+            this.notifyIcon.BalloonTipTitle = "画像半蔵";
             this.notifyIcon.ContextMenuStrip = this.systemTrayContextMenuStrip;
             this.notifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon.Icon")));
             this.notifyIcon.Text = "画像半蔵";
@@ -50,19 +52,19 @@
             this.showMenuItem,
             this.quitMenuItem});
             this.systemTrayContextMenuStrip.Name = "systemTrayContextMenuStrip";
-            this.systemTrayContextMenuStrip.Size = new System.Drawing.Size(132, 52);
+            this.systemTrayContextMenuStrip.Size = new System.Drawing.Size(109, 52);
             // 
             // showMenuItem
             // 
             this.showMenuItem.Name = "showMenuItem";
-            this.showMenuItem.Size = new System.Drawing.Size(131, 24);
-            this.showMenuItem.Text = "表示する";
+            this.showMenuItem.Size = new System.Drawing.Size(108, 24);
+            this.showMenuItem.Text = "表示";
             // 
             // quitMenuItem
             // 
             this.quitMenuItem.Name = "quitMenuItem";
-            this.quitMenuItem.Size = new System.Drawing.Size(131, 24);
-            this.quitMenuItem.Text = "閉じる";
+            this.quitMenuItem.Size = new System.Drawing.Size(108, 24);
+            this.quitMenuItem.Text = "終了";
             this.systemTrayContextMenuStrip.ResumeLayout(false);
 
         }

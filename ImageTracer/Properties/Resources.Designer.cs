@@ -88,7 +88,7 @@ namespace ImageTracer.Properties {
         }
         
         /// <summary>
-        ///   Quit(_X) に類似しているローカライズされた文字列を検索します。
+        ///   Close(_X) に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string MenuLabel_03 {
             get {

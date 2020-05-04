@@ -127,7 +127,7 @@
     <value>Setting(_E)</value>
   </data>
   <data name="MenuLabel_03" xml:space="preserve">
-    <value>Quit(_X)</value>
+    <value>Close(_X)</value>
   </data>
   <data name="SettingWindowLabel_01" xml:space="preserve">
     <value>Hold an Aspect Ratio</value>
