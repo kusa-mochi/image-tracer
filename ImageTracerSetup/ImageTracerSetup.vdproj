@@ -34,13 +34,13 @@
         "Entry"
         {
         "MsmKey" = "8:_660ED031F34861B813236C55E0B2518D"
-        "OwnerKey" = "8:_38A7C531D2E546CE8EAFA46221536DFC"
+        "OwnerKey" = "8:_A2745966BF1D41738A281821F7957BC6"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_660ED031F34861B813236C55E0B2518D"
-        "OwnerKey" = "8:_A2745966BF1D41738A281821F7957BC6"
+        "OwnerKey" = "8:_38A7C531D2E546CE8EAFA46221536DFC"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -58,13 +58,13 @@
         "Entry"
         {
         "MsmKey" = "8:_D757F95140501B210D58DCDDBE59B3E8"
-        "OwnerKey" = "8:_A2745966BF1D41738A281821F7957BC6"
+        "OwnerKey" = "8:_38A7C531D2E546CE8EAFA46221536DFC"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_D757F95140501B210D58DCDDBE59B3E8"
-        "OwnerKey" = "8:_38A7C531D2E546CE8EAFA46221536DFC"
+        "OwnerKey" = "8:_A2745966BF1D41738A281821F7957BC6"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -76,49 +76,49 @@
         "Entry"
         {
         "MsmKey" = "8:_E0DCE2E57291291AE350308588413634"
-        "OwnerKey" = "8:_38A7C531D2E546CE8EAFA46221536DFC"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_E0DCE2E57291291AE350308588413634"
         "OwnerKey" = "8:_A2745966BF1D41738A281821F7957BC6"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_E0DCE2E57291291AE350308588413634"
+        "OwnerKey" = "8:_38A7C531D2E546CE8EAFA46221536DFC"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_E0DCE2E57291291AE350308588413634"
         "OwnerKey" = "8:_D757F95140501B210D58DCDDBE59B3E8"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_A2745966BF1D41738A281821F7957BC6"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_38A7C531D2E546CE8EAFA46221536DFC"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_D757F95140501B210D58DCDDBE59B3E8"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_660ED031F34861B813236C55E0B2518D"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_E0DCE2E57291291AE350308588413634"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_38A7C531D2E546CE8EAFA46221536DFC"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_A2745966BF1D41738A281821F7957BC6"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_D757F95140501B210D58DCDDBE59B3E8"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_660ED031F34861B813236C55E0B2518D"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -139,13 +139,21 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
         "Release"
         {
         "DisplayName" = "8:Release"
         "IsDebugOnly" = "11:FALSE"
         "IsReleaseOnly" = "11:TRUE"
-        "OutputFilename" = "8:Release\\GazoHanzoSetup.msi"
+        "OutputFilename" = "8:Release\\SetupGazoHanzo_1.8.0.msi"
         "PackageFilesAs" = "3:2"
         "PackageFileSize" = "3:-2147483648"
         "CabType" = "3:1"
@@ -155,6 +163,22 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
+            }
         }
     }
     "Deployable"
@@ -385,7 +409,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:画像半蔵"
         "ProductCode" = "8:{037BBB8A-95C8-4C03-A5E2-B60FDA79D479}"
-        "PackageCode" = "8:{0BD55F9D-4BAC-4CC3-9820-F689761538AF}"
+        "PackageCode" = "8:{77FDC4AF-1145-4704-B09B-8C211055C8B7}"
         "UpgradeCode" = "8:{9FD00F0E-7D66-4CDA-90D7-FDA8E9A1A663}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
