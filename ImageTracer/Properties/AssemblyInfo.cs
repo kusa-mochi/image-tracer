@@ -12,7 +12,7 @@ using System.Windows;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("画像半蔵")]
-[assembly: AssemblyCopyright("Copyright c  2019 Mochi All Rights Reserved.")]
+[assembly: AssemblyCopyright("Copyright c  2020 Mochi All Rights Reserved.")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -51,7 +51,7 @@ using System.Windows;
 // すべての値を指定するか、下のように '*' を使ってビルドおよびリビジョン番号を 
 // 既定値にすることができます:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.7.1.0")]
-[assembly: AssemblyFileVersion("1.7.1.0")]
+[assembly: AssemblyVersion("1.8.0.0")]
+[assembly: AssemblyFileVersion("1.8.0.0")]
 [assembly: NeutralResourcesLanguage("")]
 
