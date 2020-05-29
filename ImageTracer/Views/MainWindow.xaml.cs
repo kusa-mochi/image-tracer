@@ -359,24 +359,21 @@ namespace ImageTracer.Views
         private void _thumb_DragDelta(object sender, System.Windows.Controls.Primitives.DragDeltaEventArgs e)
         {
             var thumb = sender as Thumb;
-            if (null != thumb)
-            {
-                var x = Canvas.GetLeft(thumb) + e.HorizontalChange;
-                var y = Canvas.GetTop(thumb) + e.VerticalChange;
+            if (thumb == null) return;
 
-                var canvas = thumb.Parent as Canvas;
-                if (null != canvas)
-                {
-                    x = Math.Max(x, 0);
-                    y = Math.Max(y, 0);
-                    x = Math.Min(x, canvas.ActualWidth - thumb.ActualWidth);
-                    y = Math.Min(y, canvas.ActualHeight - thumb.ActualHeight);
-                }
+            var canvas = thumb.Parent as Canvas;
+            if (canvas == null) return;
 
-                Canvas.SetLeft(thumb, x);
-                Canvas.SetTop(thumb, y);
-                Console.WriteLine($"dX:{x}, dY:{y}");
-            }
+            var x = Canvas.GetLeft(thumb) + e.HorizontalChange;
+            var y = Canvas.GetTop(thumb) + e.VerticalChange;
+
+            x = Math.Max(x, 0);
+            y = Math.Max(y, 0);
+            x = Math.Min(x, canvas.ActualWidth - thumb.ActualWidth);
+            y = Math.Min(y, canvas.ActualHeight - thumb.ActualHeight);
+
+            Canvas.SetLeft(thumb, x);
+            Canvas.SetTop(thumb, y);
         }
     }
 }
