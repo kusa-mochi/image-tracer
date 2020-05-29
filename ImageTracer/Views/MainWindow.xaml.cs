@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -51,6 +53,9 @@ namespace ImageTracer.Views
             _vm = new MainWindowViewModel();
             _vm.ThroughHitChanged += OnThroughHitChanged;
             this.DataContext = _vm;
+
+            Canvas.SetLeft(_thumb, 40);
+            Canvas.SetTop(_thumb, 40);
         }
 
         private void OnThroughHitChanged(object sender, ThroughHitChangedEventArgs e)
@@ -61,10 +66,10 @@ namespace ImageTracer.Views
 
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            //マウスボタン押下状態でなければ何もしない
-            if (e.ButtonState != MouseButtonState.Pressed) return;
+            ////マウスボタン押下状態でなければ何もしない
+            //if (e.ButtonState != MouseButtonState.Pressed) return;
 
-            this.DragMove();
+            //this.DragMove();
         }
 
         private void FileOpenMenuItem_Click(object sender, RoutedEventArgs e)
@@ -348,6 +353,29 @@ namespace ImageTracer.Views
                 this.Width = bm.Width;
                 this.Height = bm.Height;
                 this.GetFixRate();
+            }
+        }
+
+        private void _thumb_DragDelta(object sender, System.Windows.Controls.Primitives.DragDeltaEventArgs e)
+        {
+            var thumb = sender as Thumb;
+            if (null != thumb)
+            {
+                var x = Canvas.GetLeft(thumb) + e.HorizontalChange;
+                var y = Canvas.GetTop(thumb) + e.VerticalChange;
+
+                var canvas = thumb.Parent as Canvas;
+                if (null != canvas)
+                {
+                    x = Math.Max(x, 0);
+                    y = Math.Max(y, 0);
+                    x = Math.Min(x, canvas.ActualWidth - thumb.ActualWidth);
+                    y = Math.Min(y, canvas.ActualHeight - thumb.ActualHeight);
+                }
+
+                Canvas.SetLeft(thumb, x);
+                Canvas.SetTop(thumb, y);
+                Console.WriteLine($"dX:{x}, dY:{y}");
             }
         }
     }
