@@ -1,0 +1,84 @@
+﻿<Window x:Name="window" x:Class="ImageTracer.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
+        xmlns:l="http://schemas.livet-mvvm.net/2011/wpf"
+        xmlns:v="clr-namespace:ImageTracer.Views"
+        xmlns:vm="clr-namespace:ImageTracer.ViewModels"
+        xmlns:rs="clr-namespace:ImageTracer.Properties"
+        ResizeMode="CanResizeWithGrip"
+        Title=""
+        WindowStyle="None"
+        Background="Transparent"
+        AllowsTransparency="True"
+        Width="{Binding Width, Mode=TwoWay, FallbackValue=640}"
+        Height="{Binding Height, Mode=TwoWay, FallbackValue=480}"
+        MouseLeftButtonDown="Window_MouseLeftButtonDown"
+        SourceInitialized="window_SourceInitialized"
+        Loaded="window_Loaded"
+        PreviewKeyDown="window_PreviewKeyDown"
+        Topmost="{Binding ImageTopmost}">
+
+    <WindowChrome.WindowChrome>
+        <WindowChrome CaptionHeight="{x:Static SystemParameters.CaptionHeight}"
+                      ResizeBorderThickness="20"
+                      UseAeroCaptionButtons="False"/>
+    </WindowChrome.WindowChrome>
+
+    <Window.Resources>
+        <ContextMenu x:Key="MainContextMenu">
+            <MenuItem x:Name="FileOpenMenuItem" Header="{x:Static rs:Resources.MenuLabel_01}" Click="FileOpenMenuItem_Click"/>
+            <MenuItem Header="{x:Static rs:Resources.MenuLabel_02}" Command="{Binding ShowSettingDialogCommand}"/>
+            <MenuItem x:Name="CloseMenuItem" Header="{x:Static rs:Resources.MenuLabel_03}" Command="{Binding CloseCommand, Mode=OneWay}"/>
+        </ContextMenu>
+        <BooleanToVisibilityConverter x:Key="b2v"/>
+    </Window.Resources>
+
+    <i:Interaction.Triggers>
+
+        <l:InteractionMessageTrigger
+            MessageKey="ShowSettingDialogCommand" Messenger="{Binding Messenger}">
+            <l:TransitionInteractionMessageAction
+                WindowType="{x:Type v:SettingDialog}" Mode="Normal"/>
+        </l:InteractionMessageTrigger>
+
+        <!--Viewに特別な要件が存在しない限りは、トリガーやアクションの自作にこだわらず積極的にコードビハインドを使いましょう -->
+        <!--Viewのコードビハインドは、基本的にView内で完結するロジックとViewModelからのイベントの受信(専用リスナを使用する)に限るとトラブルが少なくなります -->
+        <!--Livet1.1からはコードビハインドでViewModelのイベントを受信するためのWeakEventLisnterサポートが追加されています -->
+
+        <!--WindowのContentRenderedイベントのタイミングでViewModelのInitializeメソッドが呼ばれます-->
+        <i:EventTrigger EventName="ContentRendered">
+            <l:LivetCallMethodAction MethodTarget="{Binding}" MethodName="Initialize"/>
+        </i:EventTrigger>
+
+        <!--Windowが閉じたタイミングでViewModelのDisposeメソッドが呼ばれます-->
+        <i:EventTrigger EventName="Closed">
+            <l:DataContextDisposeAction/>
+        </i:EventTrigger>
+        <l:InteractionMessageTrigger MessageKey="Close" Messenger="{Binding Messenger}">
+            <l:WindowInteractionMessageAction/>
+        </l:InteractionMessageTrigger>
+
+        <!--WindowのCloseキャンセル処理に対応する場合は、WindowCloseCancelBehaviorの使用を検討してください-->
+
+    </i:Interaction.Triggers>
+
+    <Grid Width="Auto" Height="Auto">
+        <Image
+            x:Name="_image"
+            Source="{Binding CurrentImage}"
+            ContextMenu="{StaticResource MainContextMenu}"
+            Opacity="{Binding Alpha, FallbackValue=0.5}"
+            Stretch="Fill"
+            Visibility="{Binding ImageLoaded, Converter={StaticResource b2v}, FallbackValue=Visible, Mode=OneWay}" AllowDrop="True" DragOver="_image_DragOver" Drop="_image_Drop"/>
+        <Grid
+            x:Name="_gridOverImage"
+            Background="#FF0070C0"
+            ContextMenu="{StaticResource MainContextMenu}"
+            Opacity="{Binding Alpha, FallbackValue=0.5}"
+            Visibility="{Binding ImageUnloaded, Converter={StaticResource b2v}, FallbackValue=Collapsed, Mode=OneWay}" AllowDrop="True" DragOver="_image_DragOver" Drop="_image_Drop">
+            <TextBlock Text="{x:Static rs:Resources.MainWindowLabel_01}" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="32" Foreground="#FFFEFEFE"/>
+        </Grid>
+    </Grid>
+</Window>
