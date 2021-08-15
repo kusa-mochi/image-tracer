@@ -15,13 +15,23 @@ yarn install
 ```
 
 ### Compiles and hot-reloads for development
+## for web browser
 ```
 yarn serve
 ```
+## for desktop
+```
+yarn electron:serve
+```
 
 ### Compiles and minifies for production
+## for web browser
 ```
 yarn build
+```
+## for desktop
+```
+yarn electron:build
 ```
 
 ### Lints and fixes files
