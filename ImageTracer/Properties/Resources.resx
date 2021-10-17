@@ -153,6 +153,9 @@
   <data name="SettingWindowLabel_08" xml:space="preserve">
     <value>Through Mouse Event.</value>
   </data>
+  <data name="SettingWindowLabel_09" xml:space="preserve">
+    <value>Angle [deg]</value>
+  </data>
   <data name="SettingWindowTitle" xml:space="preserve">
     <value>Setting</value>
   </data>

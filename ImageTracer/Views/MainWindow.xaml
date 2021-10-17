@@ -84,37 +84,22 @@
 
     </i:Interaction.Triggers>
 
-    <Canvas>
+    <Canvas Margin="-500,-500,-500,-500">
         <Thumb
             x:Name="_thumb"
             Width="{Binding Width, Mode=TwoWay, FallbackValue=640}"
             Height="{Binding Height, Mode=TwoWay, FallbackValue=480}"
-            DragDelta="_thumb_DragDelta">
-            <Thumb.LayoutTransform>
-                <RotateTransform
-                    Angle="45"
-                    CenterX="{Binding ActualWidth, ElementName=_quarterGrid}"
-                    CenterY="{Binding ActualHeight, ElementName=_quarterGrid}" />
-            </Thumb.LayoutTransform>
+            DragDelta="_thumb_DragDelta"
+            RenderTransformOrigin="0.5, 0.5" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Thumb.RenderTransform>
+                <RotateTransform Angle="{Binding Angle}"/>
+            </Thumb.RenderTransform>
             <Thumb.Template>
                 <ControlTemplate
                     TargetType="{x:Type Thumb}">
                     <Grid
                         Width="Auto"
                         Height="Auto">
-                        <Grid
-                            Visibility="Hidden">
-                            <Grid.RowDefinitions>
-                                <RowDefinition />
-                                <RowDefinition />
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition />
-                                <ColumnDefinition />
-                            </Grid.ColumnDefinitions>
-                            <Grid
-                                x:Name="_quarterGrid" />
-                        </Grid>
                         <Image
                             x:Name="_image"
                             Source="{Binding CurrentImage}"

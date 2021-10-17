@@ -54,8 +54,8 @@ namespace ImageTracer.Views
             _vm.ThroughHitChanged += OnThroughHitChanged;
             this.DataContext = _vm;
 
-            Canvas.SetLeft(_thumb, 40);
-            Canvas.SetTop(_thumb, 40);
+            Canvas.SetLeft(_thumb, 500);
+            Canvas.SetTop(_thumb, 500);
         }
 
         private void OnThroughHitChanged(object sender, ThroughHitChangedEventArgs e)

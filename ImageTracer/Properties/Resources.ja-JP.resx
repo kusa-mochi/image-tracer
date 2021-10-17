@@ -153,6 +153,9 @@
   <data name="SettingWindowLabel_08" xml:space="preserve">
     <value>マウス操作を透過する。</value>
   </data>
+  <data name="SettingWindowLabel_09" xml:space="preserve">
+    <value>回転角度 [°]</value>
+  </data>
   <data name="SettingWindowTitle" xml:space="preserve">
     <value>設定</value>
   </data>

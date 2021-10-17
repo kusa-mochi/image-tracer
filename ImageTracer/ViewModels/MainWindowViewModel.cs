@@ -271,6 +271,25 @@ namespace ImageTracer.ViewModels
 
         #endregion
 
+        #region Angle変更通知プロパティ
+
+        private double _Angle = 0.0;
+
+        public double Angle
+        {
+            get
+            { return _Angle; }
+            set
+            {
+                if (_Angle == value)
+                    return;
+                _Angle = value;
+                RaisePropertyChanged();
+            }
+        }
+
+        #endregion
+
         #region ShowSettingDialogCommand
         private ViewModelCommand _ShowSettingDialogCommand;
 

@@ -169,6 +169,15 @@ namespace ImageTracer.Properties {
         }
         
         /// <summary>
+        ///   Angle [deg] に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string SettingWindowLabel_09 {
+            get {
+                return ResourceManager.GetString("SettingWindowLabel_09", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Setting に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string SettingWindowTitle {
