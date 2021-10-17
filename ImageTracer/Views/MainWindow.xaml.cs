@@ -38,6 +38,8 @@ namespace ImageTracer.Views
         private double _fixRate;
         private double _horizontalMargin;
         private double _verticalMargin;
+        private const double _initialThumbLeft = 500.0;
+        private const double _initialThumbTop = 500.0;
         private MainWindowViewModel _vm = null;
 
         public MainWindow()
@@ -54,8 +56,8 @@ namespace ImageTracer.Views
             _vm.ThroughHitChanged += OnThroughHitChanged;
             this.DataContext = _vm;
 
-            Canvas.SetLeft(_thumb, 500);
-            Canvas.SetTop(_thumb, 500);
+            Canvas.SetLeft(_thumb, _initialThumbLeft);
+            Canvas.SetTop(_thumb, _initialThumbTop);
         }
 
         private void OnThroughHitChanged(object sender, ThroughHitChangedEventArgs e)
