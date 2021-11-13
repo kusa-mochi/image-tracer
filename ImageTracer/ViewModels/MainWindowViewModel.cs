@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -290,6 +290,46 @@ namespace ImageTracer.ViewModels
 
         #endregion
 
+        #region ImageLeft変更通知プロパティ
+
+        private double _ImageLeft = 500.0;
+
+        public double ImageLeft
+        {
+            get
+            { return _ImageLeft; }
+            set
+            {
+                if (_ImageLeft == value)
+                    return;
+                _ImageLeft = value;
+                Console.WriteLine("ImageLeft: " + value);
+                RaisePropertyChanged();
+            }
+        }
+
+        #endregion
+
+        #region ImageTop変更通知プロパティ
+
+        private double _ImageTop = 500.0;
+
+        public double ImageTop
+        {
+            get
+            { return _ImageTop; }
+            set
+            {
+                if (_ImageTop == value)
+                    return;
+                _ImageTop = value;
+                Console.WriteLine("ImageTop: " + value);
+                RaisePropertyChanged();
+            }
+        }
+
+        #endregion
+
         #region ShowSettingDialogCommand
         private ViewModelCommand _ShowSettingDialogCommand;
 
@@ -345,6 +385,50 @@ namespace ImageTracer.ViewModels
 
         #region FixRateCommand
         public ICommand FixRateCommand { get; set; }
+        #endregion
+
+        #region MoveImageCommand
+
+        private ListenerCommand<string> _MoveImageCommand = null;
+
+        public ListenerCommand<string> MoveImageCommand
+        {
+            get
+            {
+                if (_MoveImageCommand == null)
+                {
+                    _MoveImageCommand = new ListenerCommand<string>(MoveImage, CanMoveImage);
+                }
+                return _MoveImageCommand;
+            }
+        }
+
+        public bool CanMoveImage()
+        {
+            return !ThroughHit;
+        }
+
+        public void MoveImage(string parameter)
+        {
+            switch (parameter)
+            {
+                case "Right":
+                    ImageLeft++;
+                    break;
+                case "Down":
+                    ImageTop++;
+                    break;
+                case "Left":
+                    ImageLeft--;
+                    break;
+                case "Up":
+                    ImageTop--;
+                    break;
+                default:
+                    break;
+            }
+        }
+
         #endregion
 
         /// <summary>

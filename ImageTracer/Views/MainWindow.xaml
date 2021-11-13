@@ -1,4 +1,4 @@
-﻿<Window
+<Window
     x:Name="window"
     x:Class="ImageTracer.Views.MainWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -18,7 +18,6 @@
     MouseLeftButtonDown="Window_MouseLeftButtonDown"
     SourceInitialized="window_SourceInitialized"
     Loaded="window_Loaded"
-    PreviewKeyDown="window_PreviewKeyDown"
     Topmost="{Binding ImageTopmost}">
 
     <WindowChrome.WindowChrome>
@@ -46,6 +45,13 @@
         <BooleanToVisibilityConverter
             x:Key="b2v" />
     </Window.Resources>
+
+    <Window.InputBindings>
+        <KeyBinding Key="Right" Command="{Binding MoveImageCommand}" CommandParameter="Right"/>
+        <KeyBinding Key="Down" Command="{Binding MoveImageCommand}" CommandParameter="Down"/>
+        <KeyBinding Key="Left" Command="{Binding MoveImageCommand}" CommandParameter="Left"/>
+        <KeyBinding Key="Up" Command="{Binding MoveImageCommand}" CommandParameter="Up"/>
+    </Window.InputBindings>
 
     <i:Interaction.Triggers>
 
@@ -87,6 +93,8 @@
     <Canvas Margin="-500,-500,-500,-500">
         <Thumb
             x:Name="_thumb"
+            Canvas.Top="{Binding ImageTop, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            Canvas.Left="{Binding ImageLeft, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
             Width="{Binding Width, Mode=TwoWay, FallbackValue=640}"
             Height="{Binding Height, Mode=TwoWay, FallbackValue=480}"
             DragDelta="_thumb_DragDelta"

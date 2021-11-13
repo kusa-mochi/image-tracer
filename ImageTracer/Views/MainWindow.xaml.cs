@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -38,8 +38,6 @@ namespace ImageTracer.Views
         private double _fixRate;
         private double _horizontalMargin;
         private double _verticalMargin;
-        private const double _initialThumbLeft = 500.0;
-        private const double _initialThumbTop = 500.0;
         private MainWindowViewModel _vm = null;
 
         public MainWindow()
@@ -55,9 +53,6 @@ namespace ImageTracer.Views
             _vm = new MainWindowViewModel();
             _vm.ThroughHitChanged += OnThroughHitChanged;
             this.DataContext = _vm;
-
-            Canvas.SetLeft(_thumb, _initialThumbLeft);
-            Canvas.SetTop(_thumb, _initialThumbTop);
         }
 
         private void OnThroughHitChanged(object sender, ThroughHitChangedEventArgs e)
@@ -294,27 +289,27 @@ namespace ImageTracer.Views
             return true;
         }
 
-        private void window_PreviewKeyDown(object sender, KeyEventArgs e)
-        {
-            switch (e.Key)
-            {
-                case Key.Left:
-                    this.Left--;
-                    break;
-                case Key.Up:
-                    this.Top--;
-                    break;
-                case Key.Right:
-                    this.Left++;
-                    break;
-                case Key.Down:
-                    this.Top++;
-                    break;
-                default:
-                    // do nothing.
-                    break;
-            }
-        }
+        //private void window_PreviewKeyDown(object sender, KeyEventArgs e)
+        //{
+        //    switch (e.Key)
+        //    {
+        //        case Key.Left:
+        //            this.Left--;
+        //            break;
+        //        case Key.Up:
+        //            this.Top--;
+        //            break;
+        //        case Key.Right:
+        //            this.Left++;
+        //            break;
+        //        case Key.Down:
+        //            this.Top++;
+        //            break;
+        //        default:
+        //            // do nothing.
+        //            break;
+        //    }
+        //}
 
         private void _image_DragOver(object sender, DragEventArgs e)
         {
