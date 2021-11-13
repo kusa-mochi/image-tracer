@@ -1,9 +1,10 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.ComponentModel;
 using System.Windows;
+using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
 
@@ -427,6 +428,34 @@ namespace ImageTracer.ViewModels
                 default:
                     break;
             }
+        }
+
+        #endregion
+
+        #region DragImageCommand
+
+        private ListenerCommand<DragDeltaEventArgs> _DragImageCommand;
+
+        public ListenerCommand<DragDeltaEventArgs> DragImageCommand
+        {
+            get
+            {
+                if (_DragImageCommand == null)
+                {
+                    _DragImageCommand = new ListenerCommand<DragDeltaEventArgs>(DragImage, CanDragImage);
+                }
+                return _DragImageCommand;
+            }
+        }
+
+        public bool CanDragImage()
+        {
+            return true;
+        }
+
+        public void DragImage(DragDeltaEventArgs parameter)
+        {
+            // TODO
         }
 
         #endregion
