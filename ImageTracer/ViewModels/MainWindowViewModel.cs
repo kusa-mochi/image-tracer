@@ -326,7 +326,7 @@ namespace ImageTracer.ViewModels
         #endregion
 
         #region FixRateCommand
-        public ICommand FixRateCommand { get; set; }
+        public DelegateCommand FixRateCommand { get; set; } = new DelegateCommand();
         #endregion
 
         /// <summary>

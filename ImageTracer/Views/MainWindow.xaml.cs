@@ -42,14 +42,10 @@ namespace ImageTracer.Views
         {
             InitializeComponent();
 
-            FixRateCommand = new DelegateCommand
-            {
-                ExecuteHandler = FixRateCommandExecute,
-                CanExecuteHandler = CanFixRateCommandExecute
-            };
-
             _vm = ViewModelStaticContainer.MainWindowViewModel;
             _vm.ThroughHitChanged += OnThroughHitChanged;
+            _vm.FixRateCommand.ExecuteHandler = FixRateCommandExecute;
+            _vm.FixRateCommand.CanExecuteHandler = CanFixRateCommandExecute;
             this.DataContext = _vm;
         }
 
@@ -225,7 +221,7 @@ namespace ImageTracer.Views
             this.Height = double.NaN;
         }
 
-        public ICommand FixRateCommand
+        public DelegateCommand FixRateCommand
         {
             get
             {
