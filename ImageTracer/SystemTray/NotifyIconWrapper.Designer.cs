@@ -34,6 +34,7 @@
             this.systemTrayContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.showMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.quitMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.settingMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.systemTrayContextMenuStrip.SuspendLayout();
             // 
             // notifyIcon
@@ -50,9 +51,10 @@
             this.systemTrayContextMenuStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.systemTrayContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.showMenuItem,
+            this.settingMenuItem,
             this.quitMenuItem});
             this.systemTrayContextMenuStrip.Name = "systemTrayContextMenuStrip";
-            this.systemTrayContextMenuStrip.Size = new System.Drawing.Size(109, 52);
+            this.systemTrayContextMenuStrip.Size = new System.Drawing.Size(109, 76);
             // 
             // showMenuItem
             // 
@@ -65,6 +67,12 @@
             this.quitMenuItem.Name = "quitMenuItem";
             this.quitMenuItem.Size = new System.Drawing.Size(108, 24);
             this.quitMenuItem.Text = "終了";
+            // 
+            // settingMenuItem
+            // 
+            this.settingMenuItem.Name = "settingMenuItem";
+            this.settingMenuItem.Size = new System.Drawing.Size(108, 24);
+            this.settingMenuItem.Text = "設定";
             this.systemTrayContextMenuStrip.ResumeLayout(false);
 
         }
@@ -75,5 +83,6 @@
         private System.Windows.Forms.ContextMenuStrip systemTrayContextMenuStrip;
         private System.Windows.Forms.ToolStripMenuItem showMenuItem;
         private System.Windows.Forms.ToolStripMenuItem quitMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem settingMenuItem;
     }
 }

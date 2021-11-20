@@ -280,7 +280,7 @@ namespace ImageTracer.ViewModels
             {
                 if (_ShowSettingDialogCommand == null)
                 {
-                    _ShowSettingDialogCommand = new ViewModelCommand(Show);
+                    _ShowSettingDialogCommand = new ViewModelCommand(ShowSettingDialog);
                 }
                 return _ShowSettingDialogCommand;
             }
@@ -293,11 +293,12 @@ namespace ImageTracer.ViewModels
             set { _settingDialogTransitionMessage = value; }
         }
 
-        public void Show()
+        public void ShowSettingDialog()
         {
             // 既に設定画面が開いている場合は何もしない。
             if (_settingDialogTransitionMessage != null) return;
 
+            // 設定画面のVMとしてthisを割り当てる。
             _settingDialogTransitionMessage = new TransitionMessage(this, "ShowSettingDialogCommand");
             Messenger.Raise(_settingDialogTransitionMessage);
         }
