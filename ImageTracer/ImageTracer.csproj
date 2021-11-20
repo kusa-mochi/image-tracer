@@ -133,6 +133,7 @@
     <Compile Include="SystemTray\NotifyIconWrapper.Designer.cs">
       <DependentUpon>NotifyIconWrapper.cs</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\ViewModelStaticContainer.cs" />
     <Compile Include="Views\SettingDialog.xaml.cs">
       <DependentUpon>SettingDialog.xaml</DependentUpon>
     </Compile>

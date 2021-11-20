@@ -48,7 +48,7 @@ namespace ImageTracer.Views
                 CanExecuteHandler = CanFixRateCommandExecute
             };
 
-            _vm = new MainWindowViewModel();
+            _vm = ViewModelStaticContainer.MainWindowViewModel;
             _vm.ThroughHitChanged += OnThroughHitChanged;
             this.DataContext = _vm;
         }

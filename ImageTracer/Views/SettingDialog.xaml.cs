@@ -26,9 +26,20 @@ namespace ImageTracer.Views
             InitializeComponent();
         }
 
+        public SettingDialog(MainWindowViewModel vm)
+        {
+            if (vm == null)
+            {
+                throw new ArgumentNullException("vm");
+            }
+
+            InitializeComponent();
+            this.DataContext = vm;
+        }
+
         private void _settingDialog_Closed(object sender, EventArgs e)
         {
-            ((MainWindowViewModel)this.DataContext).SettingDialogTransitionMessage = null;
+            ViewModelStaticContainer.MainWindowViewModel.SettingDialogTransitionMessage = null;
         }
     }
 }

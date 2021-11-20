@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Windows;
 
 using ImageTracer.Views;
+using ImageTracer.ViewModels;
 
 namespace ImageTracer.SystemTray
 {
@@ -18,6 +19,7 @@ namespace ImageTracer.SystemTray
             InitializeComponent();
 
             this.showMenuItem.Click += OnShowMenuItemClick;
+            this.settingMenuItem.Click += OnSettingMenuItemClick;
             this.quitMenuItem.Click += OnQuitMenuItemClick;
 
             ShowMainWindow();
@@ -34,6 +36,11 @@ namespace ImageTracer.SystemTray
         private void OnShowMenuItemClick(object sender, EventArgs e)
         {
             ShowMainWindow();
+        }
+
+        private void OnSettingMenuItemClick(object sender, EventArgs e)
+        {
+            ShowSettingDialog();
         }
 
         private void OnQuitMenuItemClick(object sender, EventArgs e)
@@ -58,6 +65,23 @@ namespace ImageTracer.SystemTray
             }
         }
 
+        private void ShowSettingDialog()
+        {
+            if (!_isSettingDialogVisible)
+            {
+                SettingDialog settingDialog = new SettingDialog(ViewModelStaticContainer.MainWindowViewModel);
+                settingDialog.ContentRendered += (sd, ev) =>
+                {
+                    _isSettingDialogVisible = true;
+                };
+                settingDialog.Closed += (sd, ev) =>
+                {
+                    _isSettingDialogVisible = false;
+                };
+                settingDialog.Show();
+            }
+        }
+
         private void ShowBalloonTip()
         {
             // 初回起動の場合
@@ -70,5 +94,6 @@ namespace ImageTracer.SystemTray
         }
 
         private bool _isMainWindowVisible = false;
+        private bool _isSettingDialogVisible = false;
     }
 }
