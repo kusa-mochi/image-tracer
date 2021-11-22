@@ -66,6 +66,7 @@ namespace ImageTracer.ViewModels
 
         public void Initialize()
         {
+            _keySettingDialogViewModel.KeyInput += OnImageDisplayShortcutKeySet;
         }
 
         #region イベント
@@ -142,6 +143,44 @@ namespace ImageTracer.ViewModels
                 }
             }
         }
+        #endregion
+
+        #region EnableShortcutKey変更通知プロパティ
+
+        private bool _EnableShortcutKey = false;
+
+        public bool EnableShortcutKey
+        {
+            get
+            { return _EnableShortcutKey; }
+            set
+            {
+                if (_EnableShortcutKey == value)
+                    return;
+                _EnableShortcutKey = value;
+                RaisePropertyChanged();
+            }
+        }
+
+        #endregion
+
+        #region ImageDisplayShortcutKey変更通知プロパティ
+
+        private string _ImageDisplayShortcutKey = Key.RightCtrl.ToString();
+
+        public string ImageDisplayShortcutKey
+        {
+            get
+            { return _ImageDisplayShortcutKey; }
+            set
+            {
+                if (_ImageDisplayShortcutKey == value)
+                    return;
+                _ImageDisplayShortcutKey = value;
+                RaisePropertyChanged();
+            }
+        }
+
         #endregion
 
         #region Height変更通知プロパティ
@@ -304,6 +343,40 @@ namespace ImageTracer.ViewModels
         }
         #endregion
 
+        #region ShowKeySettingCommand
+
+        private ViewModelCommand _ShowKeySettingDialogCommand;
+
+        public ViewModelCommand ShowKeySettingDialogCommand
+        {
+            get
+            {
+                if (_ShowKeySettingDialogCommand == null)
+                {
+                    _ShowKeySettingDialogCommand = new ViewModelCommand(ShowKeySettingDialog);
+                }
+                return _ShowKeySettingDialogCommand;
+            }
+        }
+
+        private TransitionMessage _keySettingDialogTransitionMessage = null;
+        public TransitionMessage KeySettingDialogTransitionMessage
+        {
+            get { return _keySettingDialogTransitionMessage; }
+            set { _keySettingDialogTransitionMessage = value; }
+        }
+
+        public void ShowKeySettingDialog()
+        {
+            // 既にダイアログが開いている場合は何もしない。
+            if (_keySettingDialogTransitionMessage != null) return;
+
+            _keySettingDialogTransitionMessage = new TransitionMessage(_keySettingDialogViewModel, "ShowKeySettingDialogCommand");
+            Messenger.Raise(_keySettingDialogTransitionMessage);
+        }
+
+        #endregion
+
         #region CloseCommand
         private ViewModelCommand _CloseCommand;
 
@@ -329,6 +402,18 @@ namespace ImageTracer.ViewModels
         public DelegateCommand FixRateCommand { get; set; } = new DelegateCommand();
         #endregion
 
+        #region イベントコールバックメソッド
+
+        private void OnImageDisplayShortcutKeySet(object sender, EventArgs e)
+        {
+            // ユーザーが押したキー
+            ImageDisplayShortcutKey = _keySettingDialogViewModel.Key.ToString();
+
+            _keySettingDialogTransitionMessage = null;
+        }
+
+        #endregion
+
         /// <summary>
         /// Height / Width 比
         /// </summary>
@@ -339,5 +424,10 @@ namespace ImageTracer.ViewModels
         /// WidthまたはHeightを個別に変更する必要がある場合にtrueにする。
         /// </summary>
         private bool _sizeInitializing = false;
+
+        /// <summary>
+        /// ショートカットキー設定ダイアログのVM
+        /// </summary>
+        private KeySettingDialogViewModel _keySettingDialogViewModel = new KeySettingDialogViewModel();
     }
 }

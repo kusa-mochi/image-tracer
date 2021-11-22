@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -133,11 +133,19 @@
     <Compile Include="SystemTray\NotifyIconWrapper.Designer.cs">
       <DependentUpon>NotifyIconWrapper.cs</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\KeySettingDialogViewModel.cs" />
     <Compile Include="ViewModels\ViewModelStaticContainer.cs" />
+    <Compile Include="Views\KeySettingDialog.xaml.cs">
+      <DependentUpon>KeySettingDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\SettingDialog.xaml.cs">
       <DependentUpon>SettingDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\WindowServices.cs" />
+    <Page Include="Views\KeySettingDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
