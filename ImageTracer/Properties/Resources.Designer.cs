@@ -61,6 +61,15 @@ namespace ImageTracer.Properties {
         }
         
         /// <summary>
+        ///   Press the key you want to set as the shortcut. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string KeySettingDialogLabel_01 {
+            get {
+                return ResourceManager.GetString("KeySettingDialogLabel_01", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Right Click to Open Menu. に類似しているローカライズされた文字列を検索します。
         /// </summary>
         public static string MainWindowLabel_01 {
@@ -165,6 +174,24 @@ namespace ImageTracer.Properties {
         public static string SettingWindowLabel_08 {
             get {
                 return ResourceManager.GetString("SettingWindowLabel_08", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Enables shortcut key to switch show/hide image. に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string SettingWindowLabel_09 {
+            get {
+                return ResourceManager.GetString("SettingWindowLabel_09", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Select Key に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        public static string SettingWindowLabel_10 {
+            get {
+                return ResourceManager.GetString("SettingWindowLabel_10", resourceCulture);
             }
         }
         
