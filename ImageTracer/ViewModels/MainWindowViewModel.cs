@@ -350,6 +350,9 @@ namespace ImageTracer.ViewModels
 
         private ViewModelCommand _ShowKeySettingDialogCommand;
 
+        /// <summary>
+        /// 画像表示切替ショートカットキー設定画面を開くコマンド
+        /// </summary>
         public ViewModelCommand ShowKeySettingDialogCommand
         {
             get
