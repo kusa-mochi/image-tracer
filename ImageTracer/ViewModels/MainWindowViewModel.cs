@@ -165,6 +165,10 @@ namespace ImageTracer.ViewModels
 
         #region ImageDisplayShortcutKey変更通知プロパティ
 
+        /// <summary>
+        /// 画像表示切替ショートカットキーの指定。
+        /// 既定値は右Ctrlキー。
+        /// </summary>
         private string _ImageDisplayShortcutKey = Key.RightCtrl.ToString();
 
         public string ImageDisplayShortcutKey
