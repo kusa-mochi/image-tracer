@@ -16,7 +16,6 @@ using Livet.Messaging.Windows;
 
 using ImageTracer.Common;
 using ImageTracer.Views;
-using ImageTracer.Models;
 
 namespace ImageTracer.ViewModels
 {
