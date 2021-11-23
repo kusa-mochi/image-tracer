@@ -134,6 +134,7 @@
       <DependentUpon>NotifyIconWrapper.cs</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\KeySettingDialogViewModel.cs" />
+    <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="ViewModels\ViewModelStaticContainer.cs" />
     <Compile Include="Views\KeySettingDialog.xaml.cs">
       <DependentUpon>KeySettingDialog.xaml</DependentUpon>

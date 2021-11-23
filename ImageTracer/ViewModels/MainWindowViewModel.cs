@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,7 +19,7 @@ using ImageTracer.Views;
 
 namespace ImageTracer.ViewModels
 {
-    public class MainWindowViewModel : ViewModel
+    public class MainWindowViewModel : ViewModelBase
     {
         /* コマンド、プロパティの定義にはそれぞれ 
          * 

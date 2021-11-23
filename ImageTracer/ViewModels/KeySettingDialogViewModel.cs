@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,7 +13,7 @@ namespace ImageTracer.ViewModels
     /// <summary>
     /// ショートカットキー設定ダイアログのVM。
     /// </summary>
-    public class KeySettingDialogViewModel : ViewModel
+    public class KeySettingDialogViewModel : ViewModelBase
     {
         /// <summary>
         /// 新しく設定するショートカットキーがユーザーにより入力されたときに発火するイベント。
