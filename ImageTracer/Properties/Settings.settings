@@ -5,5 +5,8 @@
     <Setting Name="InitialRunning" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
+    <Setting Name="ImageDisplayShortcutKey" Type="System.String" Scope="User">
+      <Value Profile="(Default)">RightCtrl</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

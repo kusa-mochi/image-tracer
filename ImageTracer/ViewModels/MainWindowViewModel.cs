@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -66,6 +66,26 @@ namespace ImageTracer.ViewModels
         public void Initialize()
         {
             _keySettingDialogViewModel.KeyInput += OnImageDisplayShortcutKeySet;
+
+            Key tmpKey = Key.None;
+
+            // 設定ファイルからショートカットキーの設定値を読み込む。
+            if (!Enum.TryParse<Key>(Properties.Settings.Default.ImageDisplayShortcutKey, out tmpKey))
+            {
+                // 設定値が不正な場合
+                // 設定値が不正である旨をユーザに通知する。
+                ShowErrorMessageBox("リソース作成予定：設定ファイルの値が不正です。");
+
+                // プロパティと設定ファイルの両方に既定値を設定する。
+                ImageDisplayShortcutKey = _defaultShortcutKeyToDisplayImage.ToString();
+                Properties.Settings.Default.ImageDisplayShortcutKey = _defaultShortcutKeyToDisplayImage.ToString();
+                Properties.Settings.Default.Save();
+            }
+            else
+            {
+                // 設定値をプロパティに反映させる。
+                ImageDisplayShortcutKey = tmpKey.ToString();
+            }
         }
 
         #region イベント
@@ -167,9 +187,8 @@ namespace ImageTracer.ViewModels
 
         /// <summary>
         /// 画像表示切替ショートカットキーの指定。
-        /// 既定値は右Ctrlキー。
         /// </summary>
-        private string _ImageDisplayShortcutKey = Key.RightCtrl.ToString();
+        private string _ImageDisplayShortcutKey = _defaultShortcutKeyToDisplayImage.ToString();
 
         public string ImageDisplayShortcutKey
         {
@@ -413,7 +432,14 @@ namespace ImageTracer.ViewModels
         private void OnImageDisplayShortcutKeySet(object sender, EventArgs e)
         {
             // ユーザーが押したキー
-            ImageDisplayShortcutKey = _keySettingDialogViewModel.Key.ToString();
+            string pressedKey = _keySettingDialogViewModel.Key.ToString();
+
+            // プロパティにキーを反映させる。
+            ImageDisplayShortcutKey = pressedKey;
+
+            // 設定ファイルにキーを反映させる。
+            Properties.Settings.Default.ImageDisplayShortcutKey = pressedKey;
+            Properties.Settings.Default.Save();
 
             _keySettingDialogTransitionMessage = null;
         }
@@ -435,5 +461,10 @@ namespace ImageTracer.ViewModels
         /// ショートカットキー設定ダイアログのVM
         /// </summary>
         private KeySettingDialogViewModel _keySettingDialogViewModel = new KeySettingDialogViewModel();
+
+        /// <summary>
+        /// 画像表示切替ショートカットキーの既定値
+        /// </summary>
+        private const Key _defaultShortcutKeyToDisplayImage = Key.RightCtrl;
     }
 }

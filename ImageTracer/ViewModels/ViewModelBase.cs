@@ -20,7 +20,7 @@ namespace ImageTracer.ViewModels
         /// </summary>
         /// <param name="message"></param>
         /// <param name="title"></param>
-        public void ShowInfoMessageBox(string message, string title = "情報")
+        public void ShowInfoMessageBox(string message, string title = "リソース作成予定：情報")
         {
             Messenger.Raise(new InformationMessage(message, title, MessageBoxImage.Information, "ShowInfoMessageBox"));
         }
@@ -31,7 +31,7 @@ namespace ImageTracer.ViewModels
         /// </summary>
         /// <param name="message"></param>
         /// <param name="title"></param>
-        public void ShowErrorMessageBox(string message, string title = "エラー")
+        public void ShowErrorMessageBox(string message, string title = "リソース作成予定：エラー")
         {
             Messenger.Raise(new InformationMessage(message, title, MessageBoxImage.Error, "ShowErrorMessageBox"));
         }
@@ -43,7 +43,7 @@ namespace ImageTracer.ViewModels
         /// <param name="message"></param>
         /// <param name="title"></param>
         /// <returns></returns>
-        public bool ShowConfirmationMessageBox(string message, string title = "確認")
+        public bool ShowConfirmationMessageBox(string message, string title = "リソース作成予定：確認")
         {
             ConfirmationMessage confirmationMessage = new ConfirmationMessage(message, title, MessageBoxImage.Question, "ShowConfirmationMessageBox");
             Messenger.Raise(confirmationMessage);
