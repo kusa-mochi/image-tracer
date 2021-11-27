@@ -1,4 +1,5 @@
-﻿<Window
+﻿<!-- 設定画面 -->
+<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -8,18 +9,27 @@
         xmlns:rs="clr-namespace:ImageTracer.Properties"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" xmlns:Custom="http://schemas.livet-mvvm.net/2011/wpf" x:Name="_settingDialog" x:Class="ImageTracer.Views.SettingDialog"
         mc:Ignorable="d"
-        Title="{x:Static rs:Resources.SettingWindowTitle}" Width="300" SizeToContent="Height"
+        Title="{x:Static rs:Resources.SettingWindowTitle}" Width="350" SizeToContent="Height"
         ResizeMode="CanMinimize" Closed="_settingDialog_Closed">
     <!-- DataContextはMainWindowViewModelが割り当てられている。 -->
     <i:Interaction.Triggers>
         <Custom:InteractionMessageTrigger MessageKey="Close" Messenger="{Binding Messenger}">
             <Custom:WindowInteractionMessageAction/>
         </Custom:InteractionMessageTrigger>
+        <Custom:InteractionMessageTrigger MessageKey="ShowKeySettingDialogCommand" Messenger="{Binding Messenger}">
+            <Custom:TransitionInteractionMessageAction WindowType="{x:Type local:KeySettingDialog}" Mode="Modal"/>
+        </Custom:InteractionMessageTrigger>
     </i:Interaction.Triggers>
     <StackPanel Margin="10">
         <CheckBox x:Name="CheckBox_TopMost" Content="{x:Static rs:Resources.SettingWindowLabel_07}" IsChecked="{Binding ImageTopmost, Mode=TwoWay}" Margin="0,0,0,10"/>
         <CheckBox Content="{x:Static rs:Resources.SettingWindowLabel_08}" IsChecked="{Binding ThroughHit, Mode=TwoWay}" IsEnabled="{Binding IsChecked, ElementName=CheckBox_TopMost}" Margin="16,0,0,10"/>
         <CheckBox Content="{x:Static rs:Resources.SettingWindowLabel_01}" IsChecked="{Binding HoldAspectRatio, Mode=TwoWay}" Margin="0,0,0,10"/>
+        <CheckBox x:Name="CheckBox_Shortcut" Content="{x:Static rs:Resources.SettingWindowLabel_09}" IsChecked="{Binding IsEnableShortcutKey, Mode=OneWayToSource}" Margin="0,0,0,10"/>
+        <StackPanel Orientation="Horizontal" Margin="16,0,0,10" IsEnabled="{Binding IsChecked, ElementName=CheckBox_Shortcut}">
+            <TextBlock Text="現在設定されているキー :" Margin="4,0" VerticalAlignment="Center" Style="{DynamicResource TextBlockStyle}"/>
+            <TextBlock Text="{Binding ImageDisplayShortcutKey}" HorizontalAlignment="Left" Margin="0,0,8,0" VerticalAlignment="Center"/>
+            <Button Content="{x:Static rs:Resources.SettingWindowLabel_10}" Height="24" Padding="10,3" Command="{Binding ShowKeySettingDialogCommand}"/>
+        </StackPanel>
         <Grid Margin="0,0,0,10">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>

@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="KeySettingDialogLabel_01" xml:space="preserve">
+    <value>Press the key you want to set as the shortcut.</value>
+  </data>
   <data name="MainWindowLabel_01" xml:space="preserve">
     <value>Right Click to Open Menu.</value>
   </data>
@@ -152,6 +155,12 @@
   </data>
   <data name="SettingWindowLabel_08" xml:space="preserve">
     <value>Through Mouse Event.</value>
+  </data>
+  <data name="SettingWindowLabel_09" xml:space="preserve">
+    <value>Enables shortcut key to switch show/hide image.</value>
+  </data>
+  <data name="SettingWindowLabel_10" xml:space="preserve">
+    <value>Select Key</value>
   </data>
   <data name="SettingWindowTitle" xml:space="preserve">
     <value>Setting</value>

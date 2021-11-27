@@ -1,0 +1,9 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <!-- 必要なリソースディクショナリをすべて読み込む。 -->
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="TextBlockStyles.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+    <!-- 必要に応じてコントロールの既定のスタイルを設定する。 -->
+    <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource TextBlockStyle}"/>
+</ResourceDictionary>

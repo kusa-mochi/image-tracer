@@ -4,6 +4,7 @@
              Startup="Application_Startup"
              Exit="Application_Exit">
     <Application.Resources>
-         
+        <!-- このアプリで使うリソースディクショナリを読み込む。 -->
+        <ResourceDictionary Source="ResourceDictionaries/RootDictionary.xaml"/>
     </Application.Resources>
 </Application>

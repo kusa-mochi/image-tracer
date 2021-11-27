@@ -16,11 +16,10 @@ using Livet.Messaging.Windows;
 
 using ImageTracer.Common;
 using ImageTracer.Views;
-using ImageTracer.Models;
 
 namespace ImageTracer.ViewModels
 {
-    public class MainWindowViewModel : ViewModel
+    public class MainWindowViewModel : ViewModelBase
     {
         /* コマンド、プロパティの定義にはそれぞれ 
          * 
@@ -66,6 +65,27 @@ namespace ImageTracer.ViewModels
 
         public void Initialize()
         {
+            _keySettingDialogViewModel.KeyInput += OnImageDisplayShortcutKeySet;
+
+            Key tmpKey = Key.None;
+
+            // 設定ファイルからショートカットキーの設定値を読み込む。
+            if (!Enum.TryParse<Key>(Properties.Settings.Default.ImageDisplayShortcutKey, out tmpKey))
+            {
+                // 設定値が不正な場合
+                // 設定値が不正である旨をユーザに通知する。
+                ShowErrorMessageBox("リソース作成予定：設定ファイルの値が不正です。");
+
+                // プロパティと設定ファイルの両方に既定値を設定する。
+                ImageDisplayShortcutKey = _defaultShortcutKeyToDisplayImage.ToString();
+                Properties.Settings.Default.ImageDisplayShortcutKey = _defaultShortcutKeyToDisplayImage.ToString();
+                Properties.Settings.Default.Save();
+            }
+            else
+            {
+                // 設定値をプロパティに反映させる。
+                ImageDisplayShortcutKey = tmpKey.ToString();
+            }
         }
 
         #region イベント
@@ -142,6 +162,47 @@ namespace ImageTracer.ViewModels
                 }
             }
         }
+        #endregion
+
+        #region IsEnableShortcutKey変更通知プロパティ
+
+        private bool _IsEnableShortcutKey = false;
+
+        public bool IsEnableShortcutKey
+        {
+            get
+            { return _IsEnableShortcutKey; }
+            set
+            {
+                if (_IsEnableShortcutKey == value)
+                    return;
+                _IsEnableShortcutKey = value;
+                RaisePropertyChanged();
+            }
+        }
+
+        #endregion
+
+        #region ImageDisplayShortcutKey変更通知プロパティ
+
+        /// <summary>
+        /// 画像表示切替ショートカットキーの指定。
+        /// </summary>
+        private string _ImageDisplayShortcutKey = _defaultShortcutKeyToDisplayImage.ToString();
+
+        public string ImageDisplayShortcutKey
+        {
+            get
+            { return _ImageDisplayShortcutKey; }
+            set
+            {
+                if (_ImageDisplayShortcutKey == value)
+                    return;
+                _ImageDisplayShortcutKey = value;
+                RaisePropertyChanged();
+            }
+        }
+
         #endregion
 
         #region Height変更通知プロパティ
@@ -271,6 +332,25 @@ namespace ImageTracer.ViewModels
 
         #endregion
 
+        #region IsImageVisible変更通知プロパティ
+
+        private bool _IsImageVisible = true;
+
+        public bool IsImageVisible
+        {
+            get
+            { return _IsImageVisible; }
+            set
+            {
+                if (_IsImageVisible == value)
+                    return;
+                _IsImageVisible = value;
+                RaisePropertyChanged();
+            }
+        }
+
+        #endregion
+
         #region ShowSettingDialogCommand
         private ViewModelCommand _ShowSettingDialogCommand;
 
@@ -304,6 +384,43 @@ namespace ImageTracer.ViewModels
         }
         #endregion
 
+        #region ShowKeySettingCommand
+
+        private ViewModelCommand _ShowKeySettingDialogCommand;
+
+        /// <summary>
+        /// 画像表示切替ショートカットキー設定画面を開くコマンド
+        /// </summary>
+        public ViewModelCommand ShowKeySettingDialogCommand
+        {
+            get
+            {
+                if (_ShowKeySettingDialogCommand == null)
+                {
+                    _ShowKeySettingDialogCommand = new ViewModelCommand(ShowKeySettingDialog);
+                }
+                return _ShowKeySettingDialogCommand;
+            }
+        }
+
+        private TransitionMessage _keySettingDialogTransitionMessage = null;
+        public TransitionMessage KeySettingDialogTransitionMessage
+        {
+            get { return _keySettingDialogTransitionMessage; }
+            set { _keySettingDialogTransitionMessage = value; }
+        }
+
+        public void ShowKeySettingDialog()
+        {
+            // 既にダイアログが開いている場合は何もしない。
+            if (_keySettingDialogTransitionMessage != null) return;
+
+            _keySettingDialogTransitionMessage = new TransitionMessage(_keySettingDialogViewModel, "ShowKeySettingDialogCommand");
+            Messenger.Raise(_keySettingDialogTransitionMessage);
+        }
+
+        #endregion
+
         #region CloseCommand
         private ViewModelCommand _CloseCommand;
 
@@ -329,6 +446,59 @@ namespace ImageTracer.ViewModels
         public DelegateCommand FixRateCommand { get; set; } = new DelegateCommand();
         #endregion
 
+        #region KeyInputCommand
+
+        private ListenerCommand<Key> _KeyInputCommand;
+
+        public ListenerCommand<Key> KeyInputCommand
+        {
+            get
+            {
+                if (_KeyInputCommand == null)
+                {
+                    _KeyInputCommand = new ListenerCommand<Key>(KeyInput);
+                }
+                return _KeyInputCommand;
+            }
+        }
+
+        public void KeyInput(Key parameter)
+        {
+            string parameterString = parameter.ToString();
+
+            // 入力されたキーが画像表示切替ショートカットキーに一致した場合
+            if (parameterString == ImageDisplayShortcutKey)
+            {
+                // 画像表示切替ショートカットキーが有効な場合
+                if (IsEnableShortcutKey)
+                {
+                    // 画像の表示／非表示を切り替える。
+                    IsImageVisible = !IsImageVisible;
+                }
+            }
+        }
+
+        #endregion
+
+        #region イベントコールバックメソッド
+
+        private void OnImageDisplayShortcutKeySet(object sender, EventArgs e)
+        {
+            // ユーザーが押したキー
+            string pressedKey = _keySettingDialogViewModel.Key.ToString();
+
+            // プロパティにキーを反映させる。
+            ImageDisplayShortcutKey = pressedKey;
+
+            // 設定ファイルにキーを反映させる。
+            Properties.Settings.Default.ImageDisplayShortcutKey = pressedKey;
+            Properties.Settings.Default.Save();
+
+            _keySettingDialogTransitionMessage = null;
+        }
+
+        #endregion
+
         /// <summary>
         /// Height / Width 比
         /// </summary>
@@ -339,5 +509,15 @@ namespace ImageTracer.ViewModels
         /// WidthまたはHeightを個別に変更する必要がある場合にtrueにする。
         /// </summary>
         private bool _sizeInitializing = false;
+
+        /// <summary>
+        /// ショートカットキー設定ダイアログのVM
+        /// </summary>
+        private KeySettingDialogViewModel _keySettingDialogViewModel = new KeySettingDialogViewModel();
+
+        /// <summary>
+        /// 画像表示切替ショートカットキーの既定値
+        /// </summary>
+        private const Key _defaultShortcutKeyToDisplayImage = Key.RightCtrl;
     }
 }

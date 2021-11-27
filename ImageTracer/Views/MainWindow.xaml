@@ -1,4 +1,5 @@
-﻿<Window x:Name="window" x:Class="ImageTracer.Views.MainWindow"
+﻿<!-- メイン画面 -->
+<Window x:Name="window" x:Class="ImageTracer.Views.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
@@ -64,7 +65,7 @@
 
     </i:Interaction.Triggers>
 
-    <Grid Width="Auto" Height="Auto">
+    <Grid Width="Auto" Height="Auto" Visibility="{Binding IsImageVisible, Converter={StaticResource b2v}}">
         <Image
             x:Name="_image"
             Source="{Binding CurrentImage}"
