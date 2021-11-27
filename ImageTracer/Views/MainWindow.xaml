@@ -65,7 +65,7 @@
 
     </i:Interaction.Triggers>
 
-    <Grid Width="Auto" Height="Auto">
+    <Grid Width="Auto" Height="Auto" Visibility="{Binding IsImageVisible, Converter={StaticResource b2v}}">
         <Image
             x:Name="_image"
             Source="{Binding CurrentImage}"

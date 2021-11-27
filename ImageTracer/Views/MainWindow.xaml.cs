@@ -1,5 +1,6 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -47,6 +48,24 @@ namespace ImageTracer.Views
             _vm.FixRateCommand.ExecuteHandler = FixRateCommandExecute;
             _vm.FixRateCommand.CanExecuteHandler = CanFixRateCommandExecute;
             this.DataContext = _vm;
+
+            // キーボードのコールバックメソッドをフックする。
+            using (Process currentProcess = Process.GetCurrentProcess())
+            using (ProcessModule currentModule = currentProcess.MainModule)
+            {
+                _keyboardHookId = NativeMethods.SetWindowsHookEx(
+                    (int)NativeMethods.HookType.WH_KEYBOARD_LL,
+                    _keyboardProc,
+                    NativeMethods.GetModuleHandle(currentModule.ModuleName),
+                    0
+                    );
+            }
+        }
+
+        ~MainWindow()
+        {
+            // キーボードのコールバックメソッドをアンフックする。
+            NativeMethods.UnhookWindowsHookEx(_keyboardHookId);
         }
 
         private void OnThroughHitChanged(object sender, ThroughHitChangedEventArgs e)
@@ -346,5 +365,38 @@ namespace ImageTracer.Views
                 this.GetFixRate();
             }
         }
+
+        #region アプリ内外でグローバルに有効なイベントハンドラ
+
+        private static IntPtr GlobalKeyboardInputCallback(int nCode, IntPtr wParam, IntPtr lParam)
+        {
+            if (nCode < 0)
+            {
+                // キーボードのイベントに紐付けられた次のメソッドを実行する。メソッドがなければ処理終了。
+                return NativeMethods.CallNextHookEx(_keyboardHookId, nCode, wParam, lParam);
+            }
+
+            // キーコードを取得する。
+            KBDLLHOOKSTRUCT param = Marshal.PtrToStructure<KBDLLHOOKSTRUCT>(lParam);
+
+            // キーボードの「押し上げ」が検出された場合
+            if ((NativeMethods.KeyboardMessage)wParam == NativeMethods.KeyboardMessage.WM_KEYUP)
+            {
+                // キーコードを抽出する。
+                int keyCode = param.vkCode;
+                Key key = KeyInterop.KeyFromVirtualKey(keyCode);
+
+                // VMのコマンドを実行する。
+                ViewModelStaticContainer.MainWindowViewModel.KeyInputCommand.Execute(key);
+            }
+
+            // キーボードのイベントに紐付けられた次のメソッドを実行する。メソッドがなければ処理終了。
+            return NativeMethods.CallNextHookEx(_keyboardHookId, nCode, wParam, lParam);
+        }
+
+        private static IntPtr _keyboardHookId = IntPtr.Zero;
+        private static readonly NativeMethods.LowLevelKeyboardProc _keyboardProc = GlobalKeyboardInputCallback;
+
+        #endregion
     }
 }
