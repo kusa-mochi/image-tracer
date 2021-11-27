@@ -332,6 +332,25 @@ namespace ImageTracer.ViewModels
 
         #endregion
 
+        #region IsImageVisible変更通知プロパティ
+
+        private bool _IsImageVisible = true;
+
+        public bool IsImageVisible
+        {
+            get
+            { return _IsImageVisible; }
+            set
+            {
+                if (_IsImageVisible == value)
+                    return;
+                _IsImageVisible = value;
+                RaisePropertyChanged();
+            }
+        }
+
+        #endregion
+
         #region ShowSettingDialogCommand
         private ViewModelCommand _ShowSettingDialogCommand;
 
@@ -425,6 +444,36 @@ namespace ImageTracer.ViewModels
 
         #region FixRateCommand
         public DelegateCommand FixRateCommand { get; set; } = new DelegateCommand();
+        #endregion
+
+        #region KeyInputCommand
+
+        private ListenerCommand<Key> _KeyInputCommand;
+
+        public ListenerCommand<Key> KeyInputCommand
+        {
+            get
+            {
+                if (_KeyInputCommand == null)
+                {
+                    _KeyInputCommand = new ListenerCommand<Key>(KeyInput);
+                }
+                return _KeyInputCommand;
+            }
+        }
+
+        public void KeyInput(Key parameter)
+        {
+            string parameterString = parameter.ToString();
+
+            // 入力されたキーが画像表示切替ショートカットキーに一致した場合
+            if (parameterString == ImageDisplayShortcutKey)
+            {
+                // 画像の表示／非表示を切り替える。
+                IsImageVisible = !IsImageVisible;
+            }
+        }
+
         #endregion
 
         #region イベントコールバックメソッド
