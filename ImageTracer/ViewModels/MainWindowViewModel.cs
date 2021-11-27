@@ -164,19 +164,19 @@ namespace ImageTracer.ViewModels
         }
         #endregion
 
-        #region EnableShortcutKey変更通知プロパティ
+        #region IsEnableShortcutKey変更通知プロパティ
 
-        private bool _EnableShortcutKey = false;
+        private bool _IsEnableShortcutKey = false;
 
-        public bool EnableShortcutKey
+        public bool IsEnableShortcutKey
         {
             get
-            { return _EnableShortcutKey; }
+            { return _IsEnableShortcutKey; }
             set
             {
-                if (_EnableShortcutKey == value)
+                if (_IsEnableShortcutKey == value)
                     return;
-                _EnableShortcutKey = value;
+                _IsEnableShortcutKey = value;
                 RaisePropertyChanged();
             }
         }
@@ -469,8 +469,12 @@ namespace ImageTracer.ViewModels
             // 入力されたキーが画像表示切替ショートカットキーに一致した場合
             if (parameterString == ImageDisplayShortcutKey)
             {
-                // 画像の表示／非表示を切り替える。
-                IsImageVisible = !IsImageVisible;
+                // 画像表示切替ショートカットキーが有効な場合
+                if (IsEnableShortcutKey)
+                {
+                    // 画像の表示／非表示を切り替える。
+                    IsImageVisible = !IsImageVisible;
+                }
             }
         }
 

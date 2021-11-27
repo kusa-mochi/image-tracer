@@ -24,11 +24,11 @@
         <CheckBox x:Name="CheckBox_TopMost" Content="{x:Static rs:Resources.SettingWindowLabel_07}" IsChecked="{Binding ImageTopmost, Mode=TwoWay}" Margin="0,0,0,10"/>
         <CheckBox Content="{x:Static rs:Resources.SettingWindowLabel_08}" IsChecked="{Binding ThroughHit, Mode=TwoWay}" IsEnabled="{Binding IsChecked, ElementName=CheckBox_TopMost}" Margin="16,0,0,10"/>
         <CheckBox Content="{x:Static rs:Resources.SettingWindowLabel_01}" IsChecked="{Binding HoldAspectRatio, Mode=TwoWay}" Margin="0,0,0,10"/>
-        <CheckBox x:Name="CheckBox_Shortcut" Content="{x:Static rs:Resources.SettingWindowLabel_09}" IsChecked="{Binding EnableShortcutKey, Mode=OneWayToSource}" Margin="0,0,0,10"/>
-        <StackPanel Orientation="Horizontal" Margin="16,0,0,10">
-            <TextBlock Text="現在設定されているキー :" Margin="4,0" VerticalAlignment="Center"/>
-            <TextBlock Text="{Binding ImageDisplayShortcutKey}" HorizontalAlignment="Left" Margin="0,0,8,0" IsEnabled="False" VerticalAlignment="Center"/>
-            <Button Content="{x:Static rs:Resources.SettingWindowLabel_10}" Height="24" Padding="10,3" IsEnabled="{Binding IsChecked, ElementName=CheckBox_Shortcut}" Command="{Binding ShowKeySettingDialogCommand}"/>
+        <CheckBox x:Name="CheckBox_Shortcut" Content="{x:Static rs:Resources.SettingWindowLabel_09}" IsChecked="{Binding IsEnableShortcutKey, Mode=OneWayToSource}" Margin="0,0,0,10"/>
+        <StackPanel Orientation="Horizontal" Margin="16,0,0,10" IsEnabled="{Binding IsChecked, ElementName=CheckBox_Shortcut}">
+            <TextBlock Text="現在設定されているキー :" Margin="4,0" VerticalAlignment="Center" Style="{DynamicResource TextBlockStyle}"/>
+            <TextBlock Text="{Binding ImageDisplayShortcutKey}" HorizontalAlignment="Left" Margin="0,0,8,0" VerticalAlignment="Center"/>
+            <Button Content="{x:Static rs:Resources.SettingWindowLabel_10}" Height="24" Padding="10,3" Command="{Binding ShowKeySettingDialogCommand}"/>
         </StackPanel>
         <Grid Margin="0,0,0,10">
             <Grid.ColumnDefinitions>
