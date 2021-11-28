@@ -48,8 +48,12 @@ namespace ImageTracer.SystemTray
             Application.Current.Shutdown(0);
         }
 
+        /// <summary>
+        /// メイン画面が表示されていない場合は表示する。
+        /// </summary>
         private void ShowMainWindow()
         {
+            // メイン画面が表示されていない場合
             if (!_isMainWindowVisible)
             {
                 _mainWindow = new MainWindow();
@@ -61,13 +65,22 @@ namespace ImageTracer.SystemTray
                 {
                     _isMainWindowVisible = false;
                 };
+
+                // メイン画面を表示する。
                 _mainWindow.Show();
             }
         }
 
+        /// <summary>
+        /// 設定画面が表示されていない場合は表示する。
+        /// </summary>
         private void ShowSettingDialog()
         {
-            if (_isMainWindowVisible && !_isSettingDialogVisible)
+            // メイン画面が表示されていない場合は表示する。
+            ShowMainWindow();
+
+            // 設定画面が表示されていない場合
+            if (!_isSettingDialogVisible)
             {
                 SettingDialog settingDialog = new SettingDialog(ViewModelStaticContainer.MainWindowViewModel);
                 settingDialog.Owner = _mainWindow;
@@ -80,6 +93,8 @@ namespace ImageTracer.SystemTray
                 {
                     _isSettingDialogVisible = false;
                 };
+
+                // 設定画面を表示する。
                 settingDialog.Show();
             }
         }
