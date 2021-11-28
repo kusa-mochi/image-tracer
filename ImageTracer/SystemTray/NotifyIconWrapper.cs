@@ -48,28 +48,43 @@ namespace ImageTracer.SystemTray
             Application.Current.Shutdown(0);
         }
 
+        /// <summary>
+        /// メイン画面が表示されていない場合は表示する。
+        /// </summary>
         private void ShowMainWindow()
         {
+            // メイン画面が表示されていない場合
             if (!_isMainWindowVisible)
             {
-                MainWindow mainWindow = new MainWindow();
-                mainWindow.ContentRendered += (sd, ev) =>
+                _mainWindow = new MainWindow();
+                _mainWindow.ContentRendered += (sd, ev) =>
                 {
                     _isMainWindowVisible = true;
                 };
-                mainWindow.Closed += (sd, ev) =>
+                _mainWindow.Closed += (sd, ev) =>
                 {
                     _isMainWindowVisible = false;
                 };
-                mainWindow.Show();
+
+                // メイン画面を表示する。
+                _mainWindow.Show();
             }
         }
 
+        /// <summary>
+        /// 設定画面が表示されていない場合は表示する。
+        /// </summary>
         private void ShowSettingDialog()
         {
+            // メイン画面が表示されていない場合は表示する。
+            ShowMainWindow();
+
+            // 設定画面が表示されていない場合
             if (!_isSettingDialogVisible)
             {
                 SettingDialog settingDialog = new SettingDialog(ViewModelStaticContainer.MainWindowViewModel);
+                settingDialog.Owner = _mainWindow;
+
                 settingDialog.ContentRendered += (sd, ev) =>
                 {
                     _isSettingDialogVisible = true;
@@ -78,6 +93,8 @@ namespace ImageTracer.SystemTray
                 {
                     _isSettingDialogVisible = false;
                 };
+
+                // 設定画面を表示する。
                 settingDialog.Show();
             }
         }
@@ -92,6 +109,12 @@ namespace ImageTracer.SystemTray
                 Properties.Settings.Default.Save();
             }
         }
+
+        /// <summary>
+        /// メイン画面。
+        /// 半透明画像を表示するための "枠なし、背景透明" のウィンドウ。
+        /// </summary>
+        private MainWindow _mainWindow = null;
 
         private bool _isMainWindowVisible = false;
         private bool _isSettingDialogVisible = false;
