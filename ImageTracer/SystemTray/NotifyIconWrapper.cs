@@ -52,24 +52,26 @@ namespace ImageTracer.SystemTray
         {
             if (!_isMainWindowVisible)
             {
-                MainWindow mainWindow = new MainWindow();
-                mainWindow.ContentRendered += (sd, ev) =>
+                _mainWindow = new MainWindow();
+                _mainWindow.ContentRendered += (sd, ev) =>
                 {
                     _isMainWindowVisible = true;
                 };
-                mainWindow.Closed += (sd, ev) =>
+                _mainWindow.Closed += (sd, ev) =>
                 {
                     _isMainWindowVisible = false;
                 };
-                mainWindow.Show();
+                _mainWindow.Show();
             }
         }
 
         private void ShowSettingDialog()
         {
-            if (!_isSettingDialogVisible)
+            if (_isMainWindowVisible && !_isSettingDialogVisible)
             {
                 SettingDialog settingDialog = new SettingDialog(ViewModelStaticContainer.MainWindowViewModel);
+                settingDialog.Owner = _mainWindow;
+
                 settingDialog.ContentRendered += (sd, ev) =>
                 {
                     _isSettingDialogVisible = true;
@@ -92,6 +94,12 @@ namespace ImageTracer.SystemTray
                 Properties.Settings.Default.Save();
             }
         }
+
+        /// <summary>
+        /// メイン画面。
+        /// 半透明画像を表示するための "枠なし、背景透明" のウィンドウ。
+        /// </summary>
+        private MainWindow _mainWindow = null;
 
         private bool _isMainWindowVisible = false;
         private bool _isSettingDialogVisible = false;
