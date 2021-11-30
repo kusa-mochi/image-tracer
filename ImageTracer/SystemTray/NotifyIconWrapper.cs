@@ -14,6 +14,8 @@ namespace ImageTracer.SystemTray
 {
     public partial class NotifyIconWrapper : Component
     {
+        public static NotifyIconWrapper Instance = null;
+
         public NotifyIconWrapper()
         {
             InitializeComponent();
@@ -24,6 +26,8 @@ namespace ImageTracer.SystemTray
 
             ShowMainWindow();
             ShowBalloonTip();
+
+            Instance = this;
         }
 
         public NotifyIconWrapper(IContainer container)
@@ -74,7 +78,7 @@ namespace ImageTracer.SystemTray
         /// <summary>
         /// 設定画面が表示されていない場合は表示する。
         /// </summary>
-        private void ShowSettingDialog()
+        public void ShowSettingDialog()
         {
             // メイン画面が表示されていない場合は表示する。
             ShowMainWindow();
