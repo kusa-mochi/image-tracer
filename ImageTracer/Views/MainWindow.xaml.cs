@@ -50,15 +50,18 @@ namespace ImageTracer.Views
             this.DataContext = _vm;
 
             // キーボードのコールバックメソッドをフックする。
-            using (Process currentProcess = Process.GetCurrentProcess())
-            using (ProcessModule currentModule = currentProcess.MainModule)
+            if (_keyboardHookId == IntPtr.Zero)
             {
-                _keyboardHookId = NativeMethods.SetWindowsHookEx(
-                    (int)NativeMethods.HookType.WH_KEYBOARD_LL,
-                    _keyboardProc,
-                    NativeMethods.GetModuleHandle(currentModule.ModuleName),
-                    0
-                    );
+                using (Process currentProcess = Process.GetCurrentProcess())
+                using (ProcessModule currentModule = currentProcess.MainModule)
+                {
+                    _keyboardHookId = NativeMethods.SetWindowsHookEx(
+                        (int)NativeMethods.HookType.WH_KEYBOARD_LL,
+                        _keyboardProc,
+                        NativeMethods.GetModuleHandle(currentModule.ModuleName),
+                        0
+                        );
+                }
             }
         }
 
