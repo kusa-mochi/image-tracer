@@ -162,6 +162,9 @@
   <data name="SettingWindowLabel_10" xml:space="preserve">
     <value>Select Key</value>
   </data>
+  <data name="SettingWindowLabel_11" xml:space="preserve">
+    <value>Current Key Setting :</value>
+  </data>
   <data name="SettingWindowTitle" xml:space="preserve">
     <value>Setting</value>
   </data>
