@@ -15,6 +15,7 @@ using Livet.EventListeners;
 using Livet.Messaging.Windows;
 
 using ImageTracer.Common;
+using ImageTracer.SystemTray;
 using ImageTracer.Views;
 
 namespace ImageTracer.ViewModels
@@ -378,9 +379,8 @@ namespace ImageTracer.ViewModels
             // 既に設定画面が開いている場合は何もしない。
             if (_settingDialogTransitionMessage != null) return;
 
-            // 設定画面のVMとしてthisを割り当てる。
-            _settingDialogTransitionMessage = new TransitionMessage(this, "ShowSettingDialogCommand");
-            Messenger.Raise(_settingDialogTransitionMessage);
+            // 設定画面を表示する。
+            NotifyIconWrapper.Instance.ShowSettingDialog();
         }
         #endregion
 
