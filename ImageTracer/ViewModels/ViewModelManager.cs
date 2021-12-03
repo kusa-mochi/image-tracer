@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ImageTracer.ViewModels
 {
-    public static class ViewModelStaticContainer
+    public static class ViewModelManager
     {
         public static MainWindowViewModel MainWindowViewModel = new MainWindowViewModel();
     }

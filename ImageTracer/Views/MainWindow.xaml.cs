@@ -43,7 +43,7 @@ namespace ImageTracer.Views
         {
             InitializeComponent();
 
-            _vm = ViewModelStaticContainer.MainWindowViewModel;
+            _vm = ViewModelManager.MainWindowViewModel;
             _vm.ThroughHitChanged += OnThroughHitChanged;
             _vm.FixRateCommand.ExecuteHandler = FixRateCommandExecute;
             _vm.FixRateCommand.CanExecuteHandler = CanFixRateCommandExecute;
@@ -390,7 +390,7 @@ namespace ImageTracer.Views
                 Key key = KeyInterop.KeyFromVirtualKey(keyCode);
 
                 // VMのコマンドを実行する。
-                ViewModelStaticContainer.MainWindowViewModel.KeyInputCommand.Execute(key);
+                ViewModelManager.MainWindowViewModel.KeyInputCommand.Execute(key);
             }
 
             // キーボードのイベントに紐付けられた次のメソッドを実行する。メソッドがなければ処理終了。
