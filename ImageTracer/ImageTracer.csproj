@@ -136,13 +136,14 @@
     </Compile>
     <Compile Include="ViewModels\KeySettingDialogViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
-    <Compile Include="ViewModels\ViewModelStaticContainer.cs" />
+    <Compile Include="ViewModels\ViewModelManager.cs" />
     <Compile Include="Views\KeySettingDialog.xaml.cs">
       <DependentUpon>KeySettingDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\SettingDialog.xaml.cs">
       <DependentUpon>SettingDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\ViewManager.cs" />
     <Compile Include="Views\WindowServices.cs" />
     <Page Include="ResourceDictionaries\RootDictionary.xaml">
       <SubType>Designer</SubType>

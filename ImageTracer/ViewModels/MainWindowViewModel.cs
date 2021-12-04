@@ -380,7 +380,7 @@ namespace ImageTracer.ViewModels
             if (_settingDialogTransitionMessage != null) return;
 
             // 設定画面を表示する。
-            NotifyIconWrapper.Instance.ShowSettingDialog();
+            ViewManager.RequestShowSettingDialog();
         }
         #endregion
 

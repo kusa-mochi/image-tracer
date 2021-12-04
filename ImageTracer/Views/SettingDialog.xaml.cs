@@ -21,25 +21,19 @@ namespace ImageTracer.Views
     /// </summary>
     public partial class SettingDialog : Window
     {
+        private MainWindowViewModel _vm = null;
+
         public SettingDialog()
         {
             InitializeComponent();
-        }
 
-        public SettingDialog(MainWindowViewModel vm)
-        {
-            if (vm == null)
-            {
-                throw new ArgumentNullException("vm");
-            }
-
-            InitializeComponent();
-            this.DataContext = vm;
+            _vm = ViewModelManager.MainWindowViewModel;
+            this.DataContext = _vm;
         }
 
         private void _settingDialog_Closed(object sender, EventArgs e)
         {
-            ViewModelStaticContainer.MainWindowViewModel.SettingDialogTransitionMessage = null;
+            ViewModelManager.MainWindowViewModel.SettingDialogTransitionMessage = null;
         }
     }
 }
